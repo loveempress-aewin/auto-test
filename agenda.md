@@ -38,9 +38,9 @@ source from : IPMI Test Report v1.0.20N.xlsx
 |Log & Report								|		|
 |   :---:									| :---:	|
 |TEST RECORD\Log&Reports\LOG.jpg			| V		|
-|TEST RECORD\Log&Reports\SEL LOG.jpg		| ?		|
-|TEST RECORD\Log&Reports\CLEAR LOG.jpg		| ?		|
-|TEST RECORD\Log&Reports\WARM BOOT SEL.jpg	| ?		|
+|TEST RECORD\Log&Reports\SEL-LOG.jpg		| V		|
+|TEST RECORD\Log&Reports\CLEAR-LOG.jpg		| V		|
+|TEST RECORD\Log&Reports\WARM-BOOT-SEL.jpg	| V		|
 |TEST RECORD\Log&Reports\COOL BOOT SEL.jpg	| ?		|
 
 > because  kvm and serial LAN -> due to the screen size

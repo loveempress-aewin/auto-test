@@ -1403,6 +1403,104 @@ read -p " varify ip: \"${var_ip}\" ( y to comfirm ) " con_tem_flag;
 默默的降低BUG的發生率
 
 ---
+---
+# bash ipmitool SEL no entries
+在這裡遇到一個很神奇的問題
+```bash
+	133.  buf_sel_elist=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)
+	134.  echo -e "${buf_sel_elist}"
+	135.  echo -e "${buf_sel_elist}">TEST\ RECORD/Log\&Reports/LOG.txt
+	136.  buf_clear=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel clear)
+	137.  echo -e "${buf_clear}"
+	138.  echo -e "${buf_clear}">TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	139.  echo -e "\n\n\n===="
+	140.  buf_cli_sel$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist);
+	141.  echo -e "!!!!!!--------------------------------------------------"
+	142.  echo -e "${buf_cls_sel}";
+	143.  echo -e " -------";
+	144.  echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+```
+請看 141L
+把!!!!----當基準來看
+![no-entries0](./pic/dev_no_entries_0.png)
+![no-entries1](./pic/dev_no_entries_1.png)
+你會發現 我還沒有 把它print 出來
+他自動出現 當我print 後
+他是空的???
+
+> 後來我知道了 原來 這個是ipmitool 內建的
+> (我猜測) 就是因為這個 他得到的參數是空的
+> 所以他自動顯示 `SEL has no entries`
+
+所以我就用我很爛的能力 
+去翻一下ipmitool 的SC
+```C
+static int
+__ipmi_sel_savelist_entries(struct ipmi_intf * intf, int count, const char * savefile,
+							int binary)
+{
+	struct ipmi_rs * rsp;
+	struct ipmi_rq req;
+	uint16_t next_id = 0, curr_id = 0;
+	struct sel_event_record evt;
+	int n=0;
+	FILE * fp = NULL;
+
+	memset(&req, 0, sizeof(req));
+	req.msg.netfn = IPMI_NETFN_STORAGE;
+	req.msg.cmd = IPMI_CMD_GET_SEL_INFO;
+
+	rsp = intf->sendrecv(intf, &req);
+	if (!rsp) {
+		lprintf(LOG_ERR, "Get SEL Info command failed");
+		return -1;
+	}
+	if (rsp->ccode) {
+		lprintf(LOG_ERR, "Get SEL Info command failed: %s",
+		       val2str(rsp->ccode, completion_code_vals));
+		return -1;
+	}
+	if (verbose > 2)
+		printbuf(rsp->data, rsp->data_len, "sel_info");
+
+	if (rsp->data[1] == 0 && rsp->data[2] == 0) {
+		lprintf(LOG_ERR, "SEL has no entries");
+		return 0;
+	}
+
+	while (next_id != 0xffff) {
+	...
+	}
+
+	if (fp)
+		fclose(fp);
+
+	return 0;
+}
+```
+這是我縮短篇章
+找到的 就看到 的確
+他會跑 `LOG_ERR`
+這裡就可以稍稍解釋
+為什麼 會這樣
+
+### solution-ipmitool SEL has no 
+```bash
+	if [[ ${buf_cls_sel} == "" ]]
+	then
+		echo "?";
+	#echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	#$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)>>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt		>> it not recieve 
+		echo "SEL has no entries" >> TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	else
+		echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	fi
+```
+
+---
+---
+---
+
 
 
 

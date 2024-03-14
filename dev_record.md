@@ -1363,6 +1363,101 @@ I intentionally added double quotes to confirm,
 silently reducing the occurrence rate of bugs.
 
 ---
+---
+# bash ipmitool SEL no entries
+Encountered a very mysterious problem here
+```bash
+	133.  buf_sel_elist=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)
+	134.  echo -e "${buf_sel_elist}"
+	135.  echo -e "${buf_sel_elist}">TEST\ RECORD/Log\&Reports/LOG.txt
+	136.  buf_clear=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel clear)
+	137.  echo -e "${buf_clear}"
+	138.  echo -e "${buf_clear}">TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	139.  echo -e "\n\n\n===="
+	140.  buf_cli_sel$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist);
+	141.  echo -e "!!!!!!--------------------------------------------------"
+	142.  echo -e "${buf_cls_sel}";
+	143.  echo -e " -------";
+	144.  echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+```
+SEE  141L
+Using !!!--- as a reference point
+![no-entries0](./pic/dev_no_entries_0.png)
+![no-entries1](./pic/dev_no_entries_1.png)
+You will find that I haven’t printed it out yet.
+It automatically appears after I print it.
+Is it empty???
 
+> Later, I found out that this is built-in in ipmitool (I speculate).
+> It’s because of this that it receives empty parameters.
+> Therefore, it automatically displays SEL has no entries
+
+So I used my terrible ability to flip through 
+the ipmitool’s (SC)
+```C
+static int
+__ipmi_sel_savelist_entries(struct ipmi_intf * intf, int count, const char * savefile,
+							int binary)
+{
+	struct ipmi_rs * rsp;
+	struct ipmi_rq req;
+	uint16_t next_id = 0, curr_id = 0;
+	struct sel_event_record evt;
+	int n=0;
+	FILE * fp = NULL;
+
+	memset(&req, 0, sizeof(req));
+	req.msg.netfn = IPMI_NETFN_STORAGE;
+	req.msg.cmd = IPMI_CMD_GET_SEL_INFO;
+
+	rsp = intf->sendrecv(intf, &req);
+	if (!rsp) {
+		lprintf(LOG_ERR, "Get SEL Info command failed");
+		return -1;
+	}
+	if (rsp->ccode) {
+		lprintf(LOG_ERR, "Get SEL Info command failed: %s",
+		       val2str(rsp->ccode, completion_code_vals));
+		return -1;
+	}
+	if (verbose > 2)
+		printbuf(rsp->data, rsp->data_len, "sel_info");
+
+	if (rsp->data[1] == 0 && rsp->data[2] == 0) {
+		lprintf(LOG_ERR, "SEL has no entries");
+		return 0;
+	}
+
+	while (next_id != 0xffff) {
+	...
+	}
+
+	if (fp)
+		fclose(fp);
+
+	return 0;
+}
+```
+This is a shortened passage When I found it,
+I indeed saw It will run LOG\_ERR 
+This is where we can briefly explain 
+Why it happens like this
+
+### solution-ipmitool SEL has no 
+```bash
+	if [[ ${buf_cls_sel} == "" ]]
+	then
+		echo "?";
+	#echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	#$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)>>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt		>> it not recieve 
+		echo "SEL has no entries" >> TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	else
+		echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	fi
+```
+
+---
+---
+---
 
 

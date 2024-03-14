@@ -112,8 +112,32 @@ echo -e "${buf_sel_elist}">TEST\ RECORD/Log\&Reports/LOG.txt
 #psu_count=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr|tr -cd '|' |wc -c)
 #echo "${psu_count}"
 #echo "${psu}">TEST\ RECORD/Sensors/SDR.txt
+function_clear(){
+	
+	echo -e "\n now will use ==> ipmitool sel clear ";
+	buf_clear=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel clear)
+	echo -e "${buf_clear}"
+	echo -e "${buf_clear}">TEST\ RECORD/Log\&Reports/CLEARG-LOG.txt
+	echo -e "Clearing SEL.  Please allow a few seconds to erase."
+	sleep 60;
+	buf_cls_sel=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)
+	if [[ ${buf_cls_sel} == "" ]]
+	then
+		echo "?";
+		echo "SEL has no entries" >> TEST\ RECORD/Log\&Reports/CLEARG-LOG.txt
+		echo "ipmitool sel elist">TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		echo "SEL has no entries">>TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		
+	else
+		echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARG-LOG.txt
+		echo "ipmitool sel elist">TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		echo "${buf_cls_sel}">TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+	fi
+	echo -e "-------\n${buf_cls_sel}\n-------";
+	echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	
+}
 
 function_ipmi;
-
-
+function_clear;
 
