@@ -20,6 +20,8 @@ another_file_setip="./setip.sh"
 function_setip(){
 	bash ${another_file_setip};
 	echo -e "\n\n"
+	## this is syn
+	var_ip=$(grep ip javascript_ip.js | cut -d ' ' -f 3 | cut -d '"' -f 2);
 }
 
 origin_ip="";
@@ -123,21 +125,25 @@ function_clear(){
 	buf_cls_sel=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)
 	if [[ ${buf_cls_sel} == "" ]]
 	then
-		echo "?";
+		##echo "?";
 		echo "SEL has no entries" >> TEST\ RECORD/Log\&Reports/CLEARG-LOG.txt
-		echo "ipmitool sel elist">TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
-		echo "SEL has no entries">>TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		echo "ipmitool sel elist">TEST\ RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		echo "SEL has no entries">>TEST\ RECORD/Log\&Reports/WARM-BOOT-SEL.txt
 		
 	else
 		echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARG-LOG.txt
-		echo "ipmitool sel elist">TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
-		echo "${buf_cls_sel}">TEST RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		echo "ipmitool sel elist">TEST\ RECORD/Log\&Reports/WARM-BOOT-SEL.txt
+		echo "${buf_cls_sel}">TEST\ RECORD/Log\&Reports/WARM-BOOT-SEL.txt
 	fi
-	echo -e "-------\n${buf_cls_sel}\n-------";
-	echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
+	#echo -e "-------\n${buf_cls_sel}\n-------";
+	#echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARG-LOG.txt
 	
 }
 
+echo "this is check --> ${var_ip} ";
+
 function_ipmi;
 function_clear;
+
+
 
