@@ -3,8 +3,8 @@
 
 |page              |group                     |todo                                                 |status |
 |:--:              |:--:                      |:--:                                                 |:--:    |
-| 1-flash image    |                          | ipmitool lan print 1                                | <->    |
-| 3-os             |                          | ipmitool mc info                                    | <->    |
+|1-flash image     |                          | ipmitool lan print 1                                | <->    |
+|3-os              |                          | ipmitool mc info                                    | <->    |
 |                  |                          | ipmitool user list 1                                | <->    |
 |                  | static ip                | sudo ipmitool lan set 1 isprc static                | pass   |
 |                  | static ip                | sudo ipmitool lan set 1 ipaddr 192.168.199.11       | pass   |
@@ -20,21 +20,21 @@
 |                  | CONTINUE                 | = on ipmi = on link = on perv =4                    | <->    |
 |                  | ipmitool set mac addr    | sudo ipmitool raw 0x0c 0x01 0x01 0xc2 0x00          | <->    |
 |                  | ipmitool set mac addr    | sudo ipmitool raw 0x0c 0x01 0x01 0x05               | <->    |
-| 4,5 webui\_part1 |                          | ipmitool sdr                                        | <->    |
-| 4,5 webui\_part1 |                          | {playwright}                                        | <->    |
-| 6-sensor page    |                          | ipmitool sdr                                        | <->    |
-| 6-sensor page    |                          | ipmitool sensor                                     | <->    |
-| 6-sensor page    |                          | ipmitool sdr list                                   | <->    |
-| 6-sensor page    |                          | ipmitool sdr type fan                               | <->    |
-| 6-sensor page    |                          | ipmitool sdr type temp                              | <->    |
-| 6-sensor page    |                          | ipmitool sdr type voltage                           | <->    |
+|4,5 webui\_part1 |                          | ipmitool sdr                                        | <->    |
+|4,5 webui\_part1 |                          | {playwright}                                        | <->    |
+|6-sensor page    |                          | ipmitool sdr                                        | <->    |
+|6-sensor page    |                          | ipmitool sensor                                     | <->    |
+|6-sensor page    |                          | ipmitool sdr list                                   | <->    |
+|6-sensor page    |                          | ipmitool sdr type fan                               | <->    |
+|6-sensor page    |                          | ipmitool sdr type temp                              | <->    |
+|6-sensor page    |                          | ipmitool sdr type voltage                           | <->    |
 |                  |                          | ipmitool sdr \| grep PSU                            | <->    |
 |                  |                          | ipmitool sdr \| grep -i fan                         | <->    |
 |                  |                          | {playwright}                                        | <->    |
-| 7-Log and Report |                          | {playwright 3}                                      | <->    |
+|7-Log and Report |                          | {playwright 3}                                      | <->    |
 |                  |                          | {playwright --> download button (get file)}         | <->    |
 |                  |                          | ipmitool sel clear (check can clear it and use WEB) | <->    |
-| 7-SEL            |                          | ipmitool sel elist                                  | <->    |
+|7-SEL            |                          | ipmitool sel elist                                  | <->    |
 |                  |                          | ipmitool sel clear                                  | <->    |
 |                  | 7.1.6 server stable test | ipmitool sel clear                                  | <->    |
 |                  | generate sel event       | ipmitool event 1                                    | <-->   |
