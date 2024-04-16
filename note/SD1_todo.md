@@ -1,7 +1,7 @@
 
 ---
 
-| page             | group                    | todo                                                | status |
+|page              |group                     |todo                                                 |status |
 |:--:              |:--:                      |:--:                                                 |:--:    |
 | 1-flash image    |                          | ipmitool lan print 1                                | <->    |
 | 3-os             |                          | ipmitool mc info                                    | <->    |
