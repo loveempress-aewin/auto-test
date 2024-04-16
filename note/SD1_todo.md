@@ -1,7 +1,8 @@
 
 ---
+
 | page             | group                    | todo                                                | status |
-|:-:|:-:|:-:|:-:|
+|:--:              |:--:                      |:--:                                                 |:--:    |
 | 1-flash image    |                          | ipmitool lan print 1                                | <->    |
 | 3-os             |                          | ipmitool mc info                                    | <->    |
 |                  |                          | ipmitool user list 1                                | <->    |
@@ -60,7 +61,7 @@
 | 14,15SOL         | 16.check                 | {playwright screen}                                 | <->    |
 |                  | 16.check                 | {playwright ano screen}                             | <->    |
 | 17-security      |                          | ...                                                 | skip   |
-| visual_syslog    |                          | {playwright screen}                                 | <->    |
+| visual\_syslog   |                          | {playwright screen}                                 | <->    |
 
 ---
 
