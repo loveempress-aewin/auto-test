@@ -1,0 +1,22 @@
+#+begin_src dot : file first.png :cmdling -Tpng :result silent
+digraph first{
+
+    varify_ip[label="varify IP"]
+    varify_password[label="varify password"];
+
+    //varify_ip->varify_password;
+    condition1 [label="con"]
+    condition2 [label="con"]
+    varify_ip -> condition1;
+    condition1 -> varify_password[label="ture"];
+    tem1[label=" reinput " shape=rect]
+    tem2[label=" reinput " shape=rect]
+    condition1 -> tem1->varify_ip[label="false" color=red];
+    varify_password -> condition2 -> in_lan ;
+    condition2 -> tem2 -> varify_password [label="f" color=red];
+
+
+    in_lan[label="lan print 1"]
+
+
+}
