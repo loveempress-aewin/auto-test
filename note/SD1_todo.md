@@ -1,6 +1,4 @@
 
----
-
 |page			|group					|todo												|status	|
 |:--:			|:--:					|:--:												|:--:	|
 |1-flashimage	|						|ipmitoollanprint1									|<->	|
@@ -21,7 +19,7 @@
 |				|ipmitoolsetmacaddr		|sudoipmitoolraw0x0c0x010x010xc20x00				|<->|
 |				|ipmitoolsetmacaddr		|sudoipmitoolraw0x0c0x010x010x05					|<->|
 |4,5webui\_part1|						|ipmitoolsdr										|<->|
-|4,5webui\_part1|						|{playwright}										|<->|
+|4,5webui\_part1|						|playwrighti										|<->|
 |6-sensorpage	|						|ipmitoolsdr										|<->|
 |6-sensorpage	|						|ipmitoolsensor										|<->|
 |6-sensorpage	|						|ipmitoolsdrlist									|<->|
@@ -30,9 +28,9 @@
 |6-sensorpage	|						|ipmitoolsdrtypevoltage								|<->|
 |				|						|ipmitoolsdr\|grepPSU								|<->|
 |				|						|ipmitoolsdr\|grep-ifan								|<->|
-|				|						|{playwright}										|<->|
-|7-LogandReport	|						|{playwright3}										|<->|
-|				|						|{playwright-->downloadbutton(getfile)}				|<->|
+|				|						|(playwright)										|<->|
+|7-LogandReport	|						|(playwright3)										|<->|
+|				|						|(playwright--\>downloadbutton(getfile))				|<->|
 |				|						|ipmitoolselclear(checkcanclearitanduseWEB)			|<->|
 |7-SEL			|						|ipmitoolselelist									|<->|
 |				|						|ipmitoolselclear									|<->|
@@ -44,24 +42,24 @@
 |				|7.1.10circular			|(writescriptloopevent)								|<->|
 |8-setting		|						|(playwrightscreenshot)								|<->|
 |8.6smtpanddns	|						|...												|pass|
-|913-WebUI-part	|						|{playwright-kvm}									|<->|
-|				|10.imageredirection	|{playwrightscreen}									|<->|
-|				|11.powercontrol		|{playwrightscreen}									|<->|
-|				|12.maintenance			|{playwrightscreen}									|<->|
-|				|12.1backupconfiguration|{playwrightscreen}									|<->|
-|				|12.3bmcrecovery		|{playwrightscren}									|<->|
-|				|12.4Firmwahrelmage		|{playwrightscreen}									|<->|
-|				|12.4Firmwahreinfor		|{playwrightscreen}									|<->|
-|				|12.5firmwahreupdate	|{playwrightscreen}									|<->|
-|				|12.6preserveconf		|{playwrightscreen}									|<->|
-|				|12.6restoreconf		|{playwrightscreen}									|<->|
-|				|12.7restorefacc		|{playwrightscreen}									|<->|
-|				|12.8systemadmin		|{playwrightscreen}									|<->|
-|				|13signout				|{playwrightscreen}									|<->|
-|14,15SOL		|16.check				|{playwrightscreen}									|<->|
-|				|16.check				|{playwrightanoscreen}								|<->|
+|913-WebUI-part	|						|(playwright-kvm)									|<->|
+|				|10.imageredirection	|(playwrightscreen)									|<->|
+|				|11.powercontrol		|(playwrightscreen)									|<->|
+|				|12.maintenance			|(playwrightscreen)									|<->|
+|				|12.1backupconfiguration|(playwrightscreen)									|<->|
+|				|12.3bmcrecovery		|(playwrightscren)									|<->|
+|				|12.4Firmwahrelmage		|(playwrightscreen)									|<->|
+|				|12.4Firmwahreinfor		|(playwrightscreen)									|<->|
+|				|12.5firmwahreupdate	|(playwrightscreen)									|<->|
+|				|12.6preserveconf		|(playwrightscreen)									|<->|
+|				|12.6restoreconf		|(playwrightscreen)									|<->|
+|				|12.7restorefacc		|(playwrightscreen)									|<->|
+|				|12.8systemadmin		|(playwrightscreen)									|<->|
+|				|13signout				|(playwrightscreen)									|<->|
+|14,15SOL		|16.check				|(playwrightscreen)									|<->|
+|				|16.check				|(playwrightanoscreen)								|<->|
 |17-security	|						|...												|skip|
-|visual\_syslog	|						|{playwrightscreen}									|<->|
+|visual\_syslog	|						|(playwrightscreen)									|<->|
 
 ---
 
