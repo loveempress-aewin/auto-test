@@ -2,7 +2,7 @@
 ---
 
 |page			|group					|todo												|status	|
-|:--:			|:--:					|:--												|:--	|
+|:--:			|:--:					|:--:												|:--:	|
 |1-flashimage	|						|ipmitoollanprint1									|<->	|
 |3-os			|						|ipmitoolmcinfo										|<->	|
 |				|						|ipmitooluserlist1									|<->|
