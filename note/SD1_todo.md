@@ -60,3 +60,6 @@
 | 17-security			|						| ... 												| skip |
 | visual_syslog			|						| {playwright screen} 								| <->|
 
+詳細的部分 請看
+`\\192.168.101.240\9998掃瞄上傳\軟體處\Wick.HY.Hsu`
+> 別動到裡面的東西 (這不是我的檔案!!!) 他是我的reference
