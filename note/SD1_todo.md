@@ -3,11 +3,11 @@
 | 1-flash image			|						| ipmitool lan print 1								| <->|
 | 3-os 					|						| ipmitool mc info									| <->|
 |						|						| ipmitool user list 1								| <->|
-|						| static ip				| sudo ipmitool lan set 1 isprc static				| pass |
-|						| static ip				| sudo ipmitool lan set 1 ipaddr 192.168.199.11 	| pass |
-|						| static ip				| sudo ipmitool lan set 1 netmask 255.255.255.0 	| pass |
-|						| static ip				| sudo ipmitool lan set 1 defgw 192.168.199.1 		| pass |
-|						| static ip				| sudo ipmitool lan set 1 arp respond on			| pass |
+|						| static ip				| sudo ipmitool lan set 1 isprc static				| skip |
+|						| static ip				| sudo ipmitool lan set 1 ipaddr 192.168.199.11 	| skip |
+|						| static ip				| sudo ipmitool lan set 1 netmask 255.255.255.0 	| skip |
+|						| static ip				| sudo ipmitool lan set 1 defgw 192.168.199.1 		| skip |
+|						| static ip				| sudo ipmitool lan set 1 arp respond on			| skip |
 |						| set user name&pswd 	| sudo ipmitool user set 1							| <->|
 |						| set user name&pswd 	| sudo ipmitool user set name 2 admin 				| <->|
 |						| set user name&pswd 	| sudo ipmitool user set password 2 admin 			| <->|
@@ -40,7 +40,7 @@
 |						| 7.1.7 & 7.1.8			| ipmitool sel elist								| <->|
 |						| 7.1.10 circular		| (write script loop event) 						| <->|
 | 8-setting				|						| (playwright screenshot) 							| <->|
-| 8.6 smtp and dns 		|						| ... 												| pass |
+| 8.6 smtp and dns 		|						| ... 												| skip |
 | 9-13-WebUI-part2 		|						| {playwright-kvm}									| <->|
 |						| 10.image redirection 	| {playwright screen} 								| <->|
 |						| 11.power control 		| {playwright screen} 								| <->|
