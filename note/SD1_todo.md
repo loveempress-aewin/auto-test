@@ -63,3 +63,22 @@
 詳細的部分 請看
 `\\192.168.101.240\9998掃瞄上傳\軟體處\Wick.HY.Hsu`
 > 別動到裡面的東西 (這不是我的檔案!!!) 他是我的reference
+
+
+| page                 | group     | todo                            | status               |
+|:--------------------:|:---------:|:-------------------------------:|:--------------------:|
+| ipmitool             |           | test any ipmi                   |                      |
+| sensor               |           | <'>                             | <'>                  |
+| log in webui         |           | test bmc networking             | <need to ask detail> |
+| bmc WDT              | WDT       | ipmitool mc watchdog get        | <'>                  |
+|                      | WDT       | ipmitool raw 0x06               | <'>                  |
+|                      | WDT       | ipmitool mc reset               | <'>                  |
+|                      | WDT       | ipmitool mc watchdog off        | <'>                  |
+| updata bmc(web ui)   |           | {playwright}                    | pass                 |
+| KVM                  |           | {playwright}                    | (not sure)           |
+| VBAT                 |           | ipmitool -I lanplus sdr\|g vbat |                      |
+| update bios (web ui) |           | {playwright}                    | <'>                  |
+| ipmitool stress test |           |                                 | check it             |
+| fan sel              |           | ipmitool sel elist \| grep fan  | <'>                  |
+| sel over night test  | overnight | {bash script}                   | <'>                  |
+
