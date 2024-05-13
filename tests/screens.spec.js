@@ -32,7 +32,7 @@ test.beforeEach('login', async({page,request })=>{
 	//loginFlag = await expect(page.locator("text=Login Failed")).not.toBeVisible();
 	console.log(" username: " + InputUser + " | password : " + InputPassword );
 	console.log(" validate : " + loginFlag );
-	const response = await page.waitForRequest(url => url.url().includes('dashboard'));	
+	const response = await page.waitForRequest(url => url.url().includes('dashboard'));
 	if(await page.getByText('Login Failed').isVisible()){
 		console.log("========================================");
 		console.log("    ERROR    :               ");
@@ -45,7 +45,7 @@ test.beforeEach('login', async({page,request })=>{
 test('screen',async({page,request})=>{
 	await page.goto('https://'+ip+'/#<.....>');
 	//
-	
+
 
 
 });

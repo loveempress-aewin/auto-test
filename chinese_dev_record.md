@@ -1500,9 +1500,47 @@ __ipmi_sel_savelist_entries(struct ipmi_intf * intf, int count, const char * sav
 ---
 ---
 ---
+###  playwright error: Error: browserType.launch  ###
+```bash
+ Error: browserType.launch: Executable doesn't exist at /home/love/.cache/ms-playwright/chromium-1117/chrome-linux/chrome
+```
+![browser-error](./pic/playwright-browserType-lanch.png))
+這裡是我一段時間才繼續回來寫playwright 遇到的問題
+[ref](https://github.com/microsoft/playwright/issues/19100)
+> Was having this same issue, if you use nvm to manage your node versions in WSL2 (as I am), then removing the sudo and just running npx playwright install-deps should fix it.  --ch4r-ch4r
+>> 還記得 當初我們下載環境時用的是哪種包嗎? 就是nvm 來下載的 所以用用看
 
+---
+---
 
+###  playwright install: error -> playwright host validation warning  ###
+![install-dep-err](./pic/playwright-install-dependencies.png)
+這裡很明顯是 安裝的問題對吧??
+那就不需要我多說甚麼了(??)
+他的底曾 就是缺少壓
+很簡單 直接暴力破解
+[dependencies](https://github.com/microsoft/playwright/issues/19100)
+```bash
+npx playwright install-deps
+```
+---
+---
 
+### playwright get form input value ###
+How do I return the value of elem so that I can verify that it is in fact 1
+[get value](https://stackoverflow.com/questions/62002041/getting-value-of-input-element-in-playwright)
 
+> inputValue method has been added in Playwright v1.13.0
 
+```
+await page.inputValue('input#my-input');
+```
 
+### playwright select option ###
+```html
+<select name="timezone" id="idtimezone" class="form-control select2-hidden-accessible" data-select2-id="idtimezone" tabindex="-1" aria-hidden="true">
+			                <option value="#" data-select2-id="815">
+			                    Select Time Zone
+                                </option>
+                                <optgroup label="Europe" data-select2-id="825"><option value="Europe/Andorra" data-select2-id="826">Europe/Andorra</option><option value="Europe/Tirane" data-select2-id="827">Europe/Tirane</option><option value="Europe/Vienna" data-select2-id="828">Europe/Vienna</option><option value="Europe/Brussels" data-select2-id="829">Europe/Brussels</option>
+                                ```

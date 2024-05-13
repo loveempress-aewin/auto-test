@@ -29,13 +29,19 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    ignoreHTTPSErrors: true,
+    /*
+
+    //[ref](https://stackoverflow.com/questions/67048422/ignore-ssl-errors-with-playwright-code-generation)
+     */
+
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-		use: 
+		use:
 		{ ...devices['Desktop Chrome'] ,
 			/*
 			 * Thu Jan  4 09:05:51 CST 2024
@@ -53,7 +59,7 @@ module.exports = defineConfig({
     //{
     //    name: 'Microsoft Edge',
     //    use:{...devices['Desktop Edge'], channel: 'msedge'  },
-    //}, 
+    //},
 	  // test my origin borwser a  lovelovequeen
 
     //{
@@ -87,7 +93,7 @@ module.exports = defineConfig({
     // },
   ],
 	/*
-	 * {{{ 
+	 * {{{
 	 * Thu Jan  4 09:08:08 CST 2024
 	contextOptions:{
 		//ignoreHTTPSErrors:ture
@@ -106,4 +112,3 @@ module.exports = defineConfig({
   // },
 
 });
-

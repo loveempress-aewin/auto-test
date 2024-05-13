@@ -19,12 +19,12 @@ test('upload bmc file',async ({page}) => {
 	await page.getByPlaceholder('Password', { exact: true }).fill(InputPassword);
 	await page.waitForTimeout(50);
 	await page.getByRole('button', { name: 'Sign me in' }).click();
-	//const response = await page.waitForRequest(url => url.url().includes('dashboard'));	
+	//const response = await page.waitForRequest(url => url.url().includes('dashboard'));
 	const response = await expect(page).toHaveURL('https://'+ip+'/#dashboard');
 	await page.goto('https://'+ip+'/#maintenance/firmware_update_wizard');
 //	await page.locator('#mainfirmware_image').setInputFiles('tests/uploadFiles/IS-5121_v1.1.18N.ima');
 	//await page.locator('#textmainfirmware_image').setInputFiles('./tests/uploadFiles/IS-5121_v1.1.18N.ima');
-	//await page.locator('#mainfirmware_image').setInputFiles('./tests/uploadFiles/'+updateBMCfile);old version 
+	//await page.locator('#mainfirmware_image').setInputFiles('./tests/uploadFiles/'+updateBMCfile);old version
 	await page.locator('#mainfirmware_image').setInputFiles('./UPLOADFILES/'+updateBMCfile);
 	await page.waitForTimeout(1600);
 	await page.getByRole('button', { name: 'Start firmware update' }).click();
@@ -51,7 +51,7 @@ test('upload bmc file',async ({page}) => {
 	await page.waitForTimeout(1024);						// necessary
 	}while(loveUploading !== "Uploading 100%");
 	//page.on('response', res => console.log(`<< : ${res.status()} ${res.url()}`));		 	//dev can debugger (just only api response)
-	
+
 
 	await page.locator('div').filter({ hasText: /^Full Flash$/ }).getByRole('insertion').click();
 	page.once('dialog', dialog => {
@@ -63,10 +63,10 @@ test('upload bmc file',async ({page}) => {
 	await page.waitForResponse((resp) => {
 		resp.url().include('api/maintenance/reset')
 		expect(resp.status()).toBe(200)
-	});	
+	});
 	*/
-	
-	// need to use it to catch api 
+
+	// need to use it to catch api
 	const [requestflag] = await Promise.all([
 		page.waitForResponse( response => response.url().includes("api/maintenance/reset") && response.status()===200,{timeout:240000}),
 	]);
@@ -77,10 +77,10 @@ test('upload bmc file',async ({page}) => {
 //		expect(dialog.message()).toContain("We will start the firmware upgrade now. You will not be able to access BMC until it flashes and restarts. Do you want to continue?");
 //		await dialog.accept();
 //	})
-	
+
 
 	await page.goto('https://'+ip+'/#login');
-	
+
 
 
 });
