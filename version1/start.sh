@@ -9,6 +9,5 @@
 ### email	:	.
 ### }}}
 
-global_ip="0.0.0.0";
-
-get_ip_file=""
+file_ip="./ip.sh"
+bash ${file_ip};

@@ -7,10 +7,6 @@ let InputUser="admin";
 const InputPassword="11111111";
 // codegen to autogenerate
 
-// test.use({
-//     ignoreHTTPSErrors: true,
-//   });
-
 import { test, expect } from '@playwright/test';
 
 test.skip('test1',async ({page}) => {
@@ -62,16 +58,7 @@ test('test', async ({ page }) => {
     dialog.accept().catch(() => {});
   });
   await page.getByRole('button', { name: ' Save' }).click();
-
-  // page.on('dialog',dialog=>console.log(dialog.message()));
-  // await page.getByRole('button').click();
-  // page.on('dialog', dialog => {
-  //   // console.log(`Dialog message: ${dialog.message()}`);
-  //   // await page.waitForTimeout(10000);
-  //   dialog.accept().catch(() => {});
-  // });
-
-    await page.waitForTimeout(9000);
-  console.log('idntp : '+idntp);
+    // await page.waitForTimeout(9000);
+  // console.log('idntp : '+idntp);
   //await page.goto('https://192.168.120.123/#login');
 });
