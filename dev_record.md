@@ -1509,3 +1509,59 @@ error write (it is my code --loveloveempress)
   //[ts and select](https://www.youtube.com/watch?v=IubdSQFOdiU)
   idtimezone.selectOption("Asia/Taipei");
 ```
+
+---
+---
+---
+
+## code gen default in alart ##
+I remember I wrote something similar before....above
+[as mentioned above](#playwright-pageonce-use-to)
+when using code generation, whenever you encounter `confirm()`
+`confirm() 預設就是 dismiss()...`
+it defaults to `dismiss()`. So , if you view it visually,
+it appears as though it pops up,
+but ultimately, It's still canceled.
+
+## page function ##
+
+[playwright dialog](https://segmentfault.com/a/1190000044878818)
+> playwright framework can listen to dialog events, so whenever an alert pops up
+> it automatically handles the event, when javascript dialogs appear,
+> such as alerts or prompts, the listener must either
+
+(while adjusting the Javascript dialog, I haven't been able to click successfully...)
+then I wanted to see what happens after wating
+(when the alert pop-up window is clicked)
+Later it poped up.
+
+```
+SyntaxError: /mnt/d/tem/WEB-auto/tests/setdate.spec.js: Unexpected reserved word 'await'. (70:4)
+68 |   page.on('dialog', dialog => {
+69 |     // console.log(`Dialog message: ${dialog.message()}`);
+>
+70 |     await page.waitForTimeout(1000);
+   |     ^
+71 |     dialog.dismiss().catch(() => {});
+72 |   });
+73 |
+at setdate.spec.js:70
+68 |   page.on('dialog', dialog => {
+69 |     // console.log(`Dialog message: ${dialog.message()}`);
+>
+70 |     await page.waitForTimeout(1000);
+   |    ^
+71 |     dialog.dismiss().catch(() => {});
+72 |   });
+73 |
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+```
+![dialog_no_await](./pic/dialog_no_await.png)
+> I genuinely feel forunate to have an 'error mode' Otherwise,
+> I would be completely clueless about what to do.
+
+---
+---
+---

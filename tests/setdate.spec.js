@@ -13,12 +13,12 @@ const InputPassword="11111111";
 
 import { test, expect } from '@playwright/test';
 
-test('test1',async ({page}) => {
+test.skip('test1',async ({page}) => {
   await page.goto('https://'+ip+'/#login');
   await page.waitForTimeout(12000);
 })
 
-test.skip('test', async ({ page }) => {
+test('test', async ({ page }) => {
   // await page.getByRole('link', { name: ' Settings' }).click();
   // await page.getByRole('link', { name: ' Date & Time' }).click();
   //================
@@ -59,14 +59,19 @@ test.skip('test', async ({ page }) => {
   // page.once('dialog', dialog => {
   page.on('dialog', dialog => {
     // console.log(`Dialog message: ${dialog.message()}`);
-    dialog.dismiss().catch(() => {});
+    dialog.accept().catch(() => {});
   });
   await page.getByRole('button', { name: ' Save' }).click();
 
-  page.on('dialog',dialog=>console.log(dialog.message()));
-  await page.getByRole('button').click();
+  // page.on('dialog',dialog=>console.log(dialog.message()));
+  // await page.getByRole('button').click();
+  // page.on('dialog', dialog => {
+  //   // console.log(`Dialog message: ${dialog.message()}`);
+  //   // await page.waitForTimeout(10000);
+  //   dialog.accept().catch(() => {});
+  // });
 
-  await page.waitForTimeout(1500);
+    await page.waitForTimeout(9000);
   console.log('idntp : '+idntp);
-  await page.goto('https://192.168.120.123/#login');
+  //await page.goto('https://192.168.120.123/#login');
 });

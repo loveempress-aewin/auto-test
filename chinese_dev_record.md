@@ -24,18 +24,18 @@ Replace beforeAll with beforeEach then it will work.
 Playwright Test has context isolation by default, this means you have a new page and context for each test. By this its not possible to give you a page instance in the beforeAll hook, since there are different pages for each test. See here for more information:
 
 ---
-## error: locator.isVisible : 
+## error: locator.isVisible :
 issues code
 ``` js
 	await page.getByText('Sensor Reading ').isVisible();
 ```
-  Error: locator.isVisible: Error: strict mode violation: 
-  getByText('Sensor Reading ') resolved to 3 elements:           
- 1) <h1>…</h1> 
-	 aka getByRole('heading', { name: 'Sensor Reading Live reading' })                                     
- 2) <li class="active">↵             
- Sensor Reading 
- </li> 
+  Error: locator.isVisible: Error: strict mode violation:
+  getByText('Sensor Reading ') resolved to 3 elements:
+ 1) <h1>…</h1>
+	 aka getByRole('heading', { name: 'Sensor Reading Live reading' })
+ 2) <li class="active">↵
+ Sensor Reading
+ </li>
 	 aka getByText('Sensor Reading', { exact: true})
  3) <div role="alert" class="alert alert-info help-item h…>…</div> aka getByText('On this page, details for all') ">
 
@@ -129,9 +129,9 @@ Referrer-Policy: no-referrer
 Content-Security-Policy: default-src 'self';object-src 'none';connect-src 'self' ws: wss:;style-src 'self';script-src 'self'; img-src 'self' blob:;frame-ancestors 'self';font-src 'self'
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 Content-Type: text/html
-Accept-Ranges: bytes 
-ETag: "2683747453" 
-Last-Modified: Fri, 08 Dec 2023 04:04:30 GMT 
+Accept-Ranges: bytes
+ETag: "2683747453"
+Last-Modified: Fri, 08 Dec 2023 04:04:30 GMT
 Content-Length: 1164
 Connection: close
 Date: Mon, 08 Jan 2024 05:42:46 GMT
@@ -155,7 +155,7 @@ but it showed `200` in the API
 
 
 ---
-##  error : User Manangement 
+##  error : User Manangement
 [basic-origin](https://www.youtube.com/watch?v=bgxQ3PXJdIM&list=PL6flErFppaj0iQG2_Dd72Jz0bfrzZwMZH&index=11)
 this is a selective menu
 ![user from](./pic/User_managment.png)
@@ -172,7 +172,7 @@ you can see the source code
 		<option value="2">2</option>
 		<option value="7">7</option>
 	</select>
-</div> 
+</div>
 </form>
 ```
 
@@ -205,16 +205,16 @@ test('run 18',async({page}) => {
 
 ### DF : `page.$`
 `page.$ `
-is a method in Playwright 
-that selects the first element on the current page 
+is a method in Playwright
+that selects the first element on the current page
 that matches the specified selector.
- 
+
 let LoveLayer = await page.$('#idgroup_by_channel');
-selects the element with ID idgroup_by_channel 
+selects the element with ID idgroup_by_channel
 and stores it in a variable named LoveLayer.
- 
+
 let allElements = await LoveLayer.$$("option");
-will select all elements in the LoveLayer element 
+will select all elements in the LoveLayer element
 that match the option selector and store them in a variable named allElements
 
 ---
@@ -231,11 +231,11 @@ test.beforeEach('login', async({page,request})=>{
 		username:"admin",
 		password:"1111111",
 		}
-	});	
+	});
 	console.log(loginResponse);
 });
 ```
-可以用POST 的方式 
+可以用POST 的方式
 It can use the POST method.
 
 ---
@@ -267,18 +267,18 @@ That's why I need purpose : to see if I'm logged in!
 			username:"admin",
 			password:"11111111",
 		}
-		});	
+		});
 	const loginResponse1 = await request.post('https://'+ip+'/api/session' , {
 		data : {
 			username:"admin",
 			password:"0111011",
 		}
-		});	
+		});
 	console.log(loginResponse0);
 	console.log("------");
 	console.log(loginResponse1);
 ```
-result:  same 
+result:  same
 
 ---
 ##   login error pass api
@@ -308,8 +308,8 @@ Require stack:
      5 | //const { response } = require('@playwright/test');
    > 6 | const {newTest} = require('fixture.js');
 ```
-	
-#### solution 
+
+#### solution
 ```js
 test.beforeEach('login', async({page,request })=>{
 	const response = await request.post("https://"+ip+"/api/session",{
@@ -375,7 +375,7 @@ because it gives users a more intuitive way
 make code clear!!!!
 
 
-## bash  if else 
+## bash  if else
 [ref](https://www.delftstack.com/zh-tw/howto/linux/how-to-use-if-else-statement-in-bash/)
 ```bash
 if [ condition ]
@@ -388,8 +388,8 @@ fi
 [ref](https://stackoverflow.com/questions/27209605/comparing-two-variables-in-while-loop-bash)
 ```bash
 while [ ${limit_count} -gt 2 ]
-do 
-	#rm -v 
+do
+	#rm -v
 	echo -e "only 2 file u need to delete some file \n    y=>yes delete\n    n=>no  delete"
 	for file_n in $(ls ./tests/uploadFiles)
 	do
@@ -437,7 +437,7 @@ then
 	echo  "|You're got some big problems!  |";
 	echo  "|  1. It's BMC problem          |";
 	echo  "|    --check bmc is on          |";
-	echo  "|  2. It's an IP problem        |"; 
+	echo  "|  2. It's an IP problem        |";
 	echo  "|    --check ip is correct      |";
 	echo  "=================================";
 	exit 1;
@@ -461,7 +461,7 @@ echo -e "The initial IP  :  ${origin_ip} \n\n";
 while [ ${use_file_ip_flag} == 1 ]
 do
 	read -p "Do you want to continue useing this IP?  press \"y\" or \"n\" " use_file_ip ;
-	case "${use_file_ip}" in 
+	case "${use_file_ip}" in
 		y|yes|Y|YES)
 			use_file_ip_flag=0;
 			ip_flag=0;
@@ -484,7 +484,7 @@ because  origin_ip
 #{{
 ===> error
 The initial IP  :  ip="192.168.120.218"
-Do you want to continue useing this IP?  press "y" or "n" y                                                         
+Do you want to continue useing this IP?  press "y" or "n" y
 cut: you must specify a list of bytes, characters, or fields
 Try 'cut --help' for more
 information.
@@ -522,7 +522,7 @@ echo -e "The initial IP  :  ${origin_ip} \n\n";
 while [ ${use_file_ip_flag} == 1 ]
 do
 	read -p "Do you want to continue useing this IP?  press \"y\" or \"n\" " use_file_ip ;
-	case "${use_file_ip}" in 
+	case "${use_file_ip}" in
 		y|yes|Y|YES)
 			use_file_ip_flag=0;
 			ip_flag=0;
@@ -553,7 +553,7 @@ I was scared so I wanted to say what happened
 ![playwright-ip](./pic/playwright-ip.png)
 
 issue: `ip=ip=ip="0.0.0.0""`
-the solution is the same in  {## bash_because_add_feature_can_use_same_IP_address.md} 
+the solution is the same in  {## bash_because_add_feature_can_use_same_IP_address.md}
 
 
 ---
@@ -601,7 +601,7 @@ set_ip;
 ```
 
 ---
-## bash different function variable and can span function and not 
+## bash different function variable and can span function and not
 although I am making a function,
 I can use it at the same time as a variable
 bash uses settings to set variables
@@ -627,7 +627,7 @@ rm: cannot remove './tests/uploadFiles/API.pdf': No such file or director
 ```bash
 OIFS="$IFS"
 IFS=$'\n'
-for file in `find . -type f -name "*.csv"`  
+for file in `find . -type f -name "*.csv"`
 do
 	echo "file = $file"
 	diff "$file" "/some/other/path/$file"
@@ -653,7 +653,7 @@ then
 fi
 ```
 ```bash
-## correct use 
+## correct use
 if [[ ${limit_count} == 1 ]]
 then
 	echo -e "==============================\n| ERROR!!! need 2 file       |\n| you only put one file      |\n==============================";
@@ -663,7 +663,7 @@ fi
 ---
 ## bash condition
 ```bash
-	while [ ${ip} == ${ipmitool_check} ] 
+	while [ ${ip} == ${ipmitool_check} ]
 	do
 read -p  " U need to input IP address : " ip;
 	done
@@ -680,7 +680,7 @@ read -p  " U need to input IP address : " ip;
 ---
 # playwright use expect to check  login is correct
 ```js
-1. 	//const response = await page.waitForRequest(url => url.url().includes('dashboard'));	
+1. 	//const response = await page.waitForRequest(url => url.url().includes('dashboard'));
 2.	const response = await expect(page).toHaveURL('https://'+ip+'/#dashboard');
 ```
 1. fail : it will be stuck and raise error (in playwright)
@@ -696,7 +696,7 @@ this way is by `codegen`
 need use `/^Full Flash$/`
 
 ---
-## playwright page.once use to 
+## playwright page.once use to
 [playwright dialog](https://playwright.dev/docs/dialogs)
 use at 3 way
 1. alert()
@@ -709,19 +709,19 @@ use at 3 way
 		dialog.accept().catch(() => {});
 	});
 ```
-in confirm() 
-1. dismiss() 
+in confirm()
+1. dismiss()
 2. accept()
 
 ---
 love me hard lov3e me
-do 520 you know love 
+do 520 you know love
 love it is omg love
 
 love me 520
 
 ---
-## playwright.issue.upload.bmc.file.after.hooks 
+## playwright.issue.upload.bmc.file.after.hooks
 ![unexpet0](./pic/is.after.unexpet0.png)
 This is explaining what went wrong
 Because this is not a matter of direct instruction
@@ -730,7 +730,7 @@ I think this is a different kind of programming problem.
 ![after-hook](./pic/is.after.hooks.png)
 this is the playwright last trace
 ![unexpet](./pic/is.after.unexpet.png)
-The last part is also where the problem can be seen 
+The last part is also where the problem can be seen
 (in playwright result)
 ```bash
 =====palywright error message ====>
@@ -755,19 +755,19 @@ so I used waiting time do solve the error
 ## playwright timeout of execeeded while running beforeEach hook
 [ref](https://stackoverflow.com/questions/67434530/how-to-capture-requests-and-responses-in-playwright-after-hitting-a-button)
 ```js
-	const response = await page.waitForRequest(url => url.url().includes('dashboard'));	
+	const response = await page.waitForRequest(url => url.url().includes('dashboard'));
 ```
-> where 'templateFrom3rdRedirect' is the part of URL unique 
+> where 'templateFrom3rdRedirect' is the part of URL unique
 > to the necessary "hop" of the last redirect
 
 in my opinion,maybe BMC's web is not a jump
 but the should have a modified the version
 because I've succeeded before
-now jump directly to the error 
+now jump directly to the error
 ( Mon Feb  5 10:29:00 CST 2024)
 
 ---
-## optimization s and echo 
+## optimization s and echo
 Reason analysis: What I ordered can be written, so I replaced the original writing method.
 ```bash
 var_catch_origin="";
@@ -777,7 +777,7 @@ echo "the check $change_file}"
 
 #echo "change_file_bash : ${change_file}";
 ###### grab the previous update file
-orgin_update_bmc_file=$(cat ./bmc_update.js | grep "updateBMCfile"|cut -d ' ' -f 3); 
+orgin_update_bmc_file=$(cat ./bmc_update.js | grep "updateBMCfile"|cut -d ' ' -f 3);
 #echo "${change_file}";												#check bmc file
 echo -e " will change version is  \e[41m${change_file}\e[0m"|tee -a log.txt
 sed -i "s/${orgin_update_bmc_file}/updateBMCfile=\"${change_file}\"/g" ./bmc_update.js
@@ -789,7 +789,7 @@ but it seems like torture for someone not familiar with the script.
 #### how to fix it
 ```bash
 #! /bin/bash
-orgin_update_bmc_file=$( grep "updateBMCfile" bmc_update.js|cut -d ' ' -f 3|cut -d '"' -f 2); 
+orgin_update_bmc_file=$( grep "updateBMCfile" bmc_update.js|cut -d ' ' -f 3|cut -d '"' -f 2);
 echo "${orgin_update_bmc_file}";
 #echo "${change_file}";												#check bmc file
 ttt="IS-520_v1.1.20N.ima";
@@ -821,7 +821,7 @@ very surprising question
 Sometimes it's normal, sometimes it's abnormal
 + correct work
 ![work](./pic/getBytext0.png)
-+ error work 
++ error work
 ![ not](./pic/getBytext1.png)
 
 Although the prompt text of the picture is different
@@ -834,7 +834,7 @@ I think it's because it's too fast
 `	await page.waitForTimeout(520); `
 ```js
 	await page.getByRole('button', { name: 'Sign me in' }).click();
-	await page.waitForTimeout(520); 
+	await page.waitForTimeout(520);
 	loginFlag = await page.getByText('Login Failed').isVisible();
 	await page.waitForTimeout(1314);
 	if(await page.getByText('Login Failed').isVisible()){
@@ -850,7 +850,7 @@ let the page comfirm and capture the judgment-element
 ## bash alias and edit issue
 [ref](https://stackoverflow.com/questions/24054154/how-do-create-an-alias-in-shell-scripts)
 
-### first 
+### first
 ```bash
 #!/bin/bash
 shopt -s expand_aliases
@@ -908,8 +908,8 @@ error output ======>
 
 ---
 ## issue : delay catch ip
-This happened after 
-I added new features and changed the overall architecture 
+This happened after
+I added new features and changed the overall architecture
 (setting up bmc files)
 ![delay](./pic/DR.delay.catch.ip.png)
 
@@ -918,16 +918,16 @@ Initially, the IP address is correct,
 but after using the new feature,
 it modifies the IP address, resulting in errors.
 
-### solution 
+### solution
 Just change the time of crawling IP
 
 ---
 ##  bash bug : fixed value parameter errors lead to - crawling non-existent files
-This is when I was writing, 
+This is when I was writing,
 because the default was two files,
 so it caused the [expected cognitive error.](https://link.springer.com/article/10.1007/s10339-007-0173-z)
-> Anticipatory cognitive errors refer to faulty thinking patterns 
-> that occur when individuals anticipate negative outcomes 
+> Anticipatory cognitive errors refer to faulty thinking patterns
+> that occur when individuals anticipate negative outcomes
 > or misinterpret situations based on cognitive biases.
 > --bing
 
@@ -983,7 +983,7 @@ $(date >> log.txt)
 #$(npx playwright test tests/change.spec.js --headed|tee -a log.txt)
 $(npx playwright test tests/change.spec.js --headed>> log.txt)
 sleep 10;
-function_catch_ver;		### --> Thu Feb 22 11:36:14 CST 2024 I comment but error...this need to catch it... because the function_catch_version need to inhire it 
+function_catch_ver;		### --> Thu Feb 22 11:36:14 CST 2024 I comment but error...this need to catch it... because the function_catch_version need to inhire it
 $(ipmitool -I lanplus -H ${ip} -U admin -P 11111111 raw 0x1e 0x01 0x00 >> log.txt);
 $(command -v date >> log.txt)
 $(npx playwright test tests/uploadfile.spec.js --headed >> log.txt)
@@ -1021,7 +1021,7 @@ limit_count=0; 														#int limit_count
 limit_count=$(ls ./UPLOADFILES/ |wc -l)
 if [[ ${limit_count} == 1 ]] ; then
 	### if only one update bmc file
-	echo -e "==============================\n| ERROR!!! need 2 files      |\n| you only put one file      |\n=============================="; exit 111;	
+	echo -e "==============================\n| ERROR!!! need 2 files      |\n| you only put one file      |\n=============================="; exit 111;
 fi
 for file in $(ls ./UPLOADFILES)
 do
@@ -1029,21 +1029,21 @@ do
 	case "${Extension}" in
 		java)
 			rm -v ./UPLOADFILES/$file;;
-			
+
 		ima)
 			echo "";;
 		*)
 			rm  ./UPLOADFILES/$file;;
-	esac	
+	esac
 done
 ```
 ![not synced ](./pic/DR_not.synced.png)
 
 There's nothing wrong with that.
 Even if the non-bmc update files are deleted,
-the error message still appears 
+the error message still appears
 (which means an inappropriate concept).
-	
+
 Why? Because my data is not synced to
 So it will cause this problem
 #### solution -- just synchronize it
@@ -1053,12 +1053,12 @@ do
 	case "${Extension}" in
 		java)
 			rm -v ./UPLOADFILES/$file;;
-			
+
 		ima)
 			echo "";;
 		*)
 			rm  ./UPLOADFILES/$file;;
-	esac	
+	esac
 done
 limit_count=$(ls ./UPLOADFILES/ |wc -l);		#### Need to synchronize
 ```
@@ -1146,7 +1146,7 @@ at kvm.spec.js:39
   42 | test('test', async ({ page }) => {
   	at Object.<anonymous> (/mnt/d/tem/WEB-auto/tests/kvm.spec.js:39:3)
   	To open last HTML report run:
-  
+
   	npx playwright show-report
   	}
 ```
@@ -1176,26 +1176,26 @@ await page.evaluate(() => {
 
 ## playwright use popup windows (need to control a new windows )
 He uses Promise to capture the context
-and use evaluate to open window (tab) 
+and use evaluate to open window (tab)
 so let our change it!
 
-I use `codegen` 
+I use `codegen`
 [If the page opens a pop-up (e.g. pages opened by target="\_blank" links)](https://playwright.dev/docs/pages)
 I find it from [playwright DOCS](https://playwright.dev/docs/)
 > Although there is no 'target' method in our JavaScript,
-> in Playwright, it observes actions and determines that 
+> in Playwright, it observes actions and determines that
 > it only captures actions. So
 > this approach has been successful!
 ```js
 	const page1Promise = page.waitForEvent('popup');
 	await page.getByRole('button', { name: ' Launch H5Viewer' }).click();
-	// only this line is so weird because  (F08E) 
+	// only this line is so weird because  (F08E)
 	const page1 = await page1Promise;
 	await page.waitForTimeout(2000);
 ```
 
 > Locators don't return promises
-> only the "action" methods like 
+> only the "action" methods like
 > `.fill()` , `.click()`, `.evaluate() `
 > and [so forth return promises](https://stackoverflow.com/questions/76155060/understanding-playwright-promises)
 
@@ -1221,7 +1221,7 @@ waiting for event "popup"
 
 at /mnt/d/tem/WEB-auto/tests/kvm.spec.js:50:28
 ```
-##### solution :  add condition  
+##### solution :  add condition
 Although playwright’s official documentation states
 that actions should be taken only after the element has finished loading,
 this condition refers to the element’s loading process, not navigation.
@@ -1250,14 +1250,14 @@ I don't have much energy )
 
 ---
 ---
-## playwright screenshot error 
+## playwright screenshot error
 ```bash
 ====== error output ======>
 Error: file data stream has unexpected number of bytes
 
 ```
 
-> same error  
+> same error
 > [playwright.issue.upload.bmc.file.after.hooks](#playwrightissueuploadbmcfileafterhooks)
 
 > but I think it no make sense...
@@ -1271,13 +1271,13 @@ So, I feel it’s not meaningful.
 ---
 ---
 ---
-# playwright only tag 
+# playwright only tag
 ```js
 test.only('run 5 -- settings/',async ({page}) => {
 ...
 ...
 });
-test.only('run' , async({page}) => { 
+test.only('run' , async({page}) => {
 ...
 ...
 });
@@ -1293,8 +1293,8 @@ this only writing style is like the mode of a flag
 ## bash insufficient capacity
 概念是一樣的 所以 我就用 縮短版來說明
 ```bash
-buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr) 
-buf_fan=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type fan) 
+buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr)
+buf_fan=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type fan)
 echo  "${buf_psu}\n">TEST\ RECORD/Sensors/SDR.txt
 echo  "${buf_fan}\n">TEST\ RECORD/Sensors/FAN.txt
 ```
@@ -1310,17 +1310,17 @@ cat ./TEST\ RECORD/Sensors/SDR.txt
 CPU0 Temp.       | 48 degrees C      | ok Inlet1 Temp.     | 25 degrees C      | ok Inlet2 Temp.     | 30 degrees C      | ok Outlet1 Temp.    | 26 degrees C      | ok Outlet2 Temp.    | 30 degrees C      | ok CPU0 VCORE       | 1.82 Volts        | ok VDIMM1 1.2V      | 1.25 Volts        | ok VDIMM2 1.2V      | 1.25 Volts        | ok +12V             | 11.97 Volts       | ok +5V              | 5.08 Volts        | ok +3.3V            | 3.32 Volts        | ok VBAT             | 2.96 Volts        | ok SYSFAN1 1        | 0 RPM             | nr SYSFAN2 1        | 0 RPM             | nr SYSFAN3 1        | 0 RPM             | nr SYSFAN4 1        | 0 RPM             | nr SYSFAN5 1        | 0 RPM             | nr PSU0 Status      | 0x00              | ok PSU0 VIn         | 114 Volts         | ok PSU0 +12V        | 11.88 Volts       | ok PSU0 Fan         | 4335 RPM          | ok PSU0 Temp.       | 24 degrees C      | ok PSU1 Status      | 0x00              | ok PSU1 VIn         | 114 Volts         | ok PSU1 +12V        | 12 Volts          | ok PSU1 Fan         | 7395 RPM          | ok PSU1 Temp.       | 24 degrees C      | ok
 ```
 這時如果只有 當時我很開心地使用
-ipmitool 然後寫入檔案後 
+ipmitool 然後寫入檔案後
 他竟然給我全部 黏在一起
 害我在思考 要怎麼分開他
 一開始我還用 抓取數值的方式
 ```bash
-buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr) 
+buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr)
 cou_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr|tr -cd "|" | wc -l)
 ```
 在這個5121裡面我只有抓到  54 個 意思是
 54但是我並不知道  他是 怎樣排列 如果用
-我用CLI的方式看來排列 
+我用CLI的方式看來排列
 ```bash
 ipmitool -I lanplus -H 192.168.120.69 -U admin -P 11111111 sdr
 ====output====>
@@ -1360,27 +1360,27 @@ OR 其他的 所以 計算好數量 也可能要寫很多東西
 一開始我是用 cat的方式變成BASH
 的文字檔的方式 後來發現 好像不用 (莫名其妙就成功了)
 ```bash
-buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr) 
+buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr)
 echo -e  "${buf_psu}\n"
 echo -e  "${buf_psu}\n">TEST\ RECORD/Sensors/SDR.txt
 	## todo  --> ipmitool sdr type fan			--> FAN.txt
-buf_fan=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type fan) 
+buf_fan=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type fan)
 echo -e  "${buf_fan}\n"
 echo -e  "${buf_fan}\n">TEST\ RECORD/Sensors/FAN.txt
 	## todo  --> ipmitool sdr | grep FAN		--> FAN1.txt
-buf_FAN=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr|grep FAN) 
+buf_FAN=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr|grep FAN)
 echo -e  "${buf_FAN}\n"
 echo -e  "${buf_FAN}\n">TEST\ RECORD/Sensors/FAN1.txt
 	## todo  --> ipmitool sdr type temperature	--> TEMPERATURE.txt
-buf_tem=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type temperature) 
+buf_tem=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type temperature)
 echo -e  "${buf_tem}\n"
 echo -e  "${buf_tem}\n">TEST\ RECORD/Sensors/TEMPERATURE.txt
 	## todo  --> ipmitool sdr voltage			--> VOLTAGE.txt
-buf_vol=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type voltage) 
+buf_vol=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr type voltage)
 echo -e  "${buf_vol}\n"
 echo -e  "${buf_vol}\n">TEST\ RECORD/Sensors/VOLTAGE.txt
 	## todo  --> ipmitool sdr | grep PSU		--> dir/PSU.txt
-buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr|grep PSU) 
+buf_psu=$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sdr|grep PSU)
 echo -e  "${buf_psu}\n"
 echo -e  "${buf_psu}\n">TEST\ RECORD/Sensors/PSU.txt
 ####echo "${buf_psu}">TEST\ RECORD/Sensors/SDR.txt ###--> not complete  so need to in order to
@@ -1432,7 +1432,7 @@ read -p " varify ip: \"${var_ip}\" ( y to comfirm ) " con_tem_flag;
 > (我猜測) 就是因為這個 他得到的參數是空的
 > 所以他自動顯示 `SEL has no entries`
 
-所以我就用我很爛的能力 
+所以我就用我很爛的能力
 去翻一下ipmitool 的SC
 ```C
 static int
@@ -1484,13 +1484,13 @@ __ipmi_sel_savelist_entries(struct ipmi_intf * intf, int count, const char * sav
 這裡就可以稍稍解釋
 為什麼 會這樣
 
-### solution-ipmitool SEL has no 
+### solution-ipmitool SEL has no
 ```bash
 	if [[ ${buf_cls_sel} == "" ]]
 	then
 		echo "?";
 	#echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
-	#$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)>>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt		>> it not recieve 
+	#$(ipmitool -I lanplus -H ${var_ip} -U admin -P 11111111 sel elist)>>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt		>> it not recieve
 		echo "SEL has no entries" >> TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
 	else
 		echo -e "\n# ipmitool sel elist\n${buf_cls_sel}">>TEST\ RECORD/Log\&Reports/CLEARGLOG.txt
@@ -1543,4 +1543,55 @@ await page.inputValue('input#my-input');
 			                    Select Time Zone
                                 </option>
                                 <optgroup label="Europe" data-select2-id="825"><option value="Europe/Andorra" data-select2-id="826">Europe/Andorra</option><option value="Europe/Tirane" data-select2-id="827">Europe/Tirane</option><option value="Europe/Vienna" data-select2-id="828">Europe/Vienna</option><option value="Europe/Brussels" data-select2-id="829">Europe/Brussels</option>
-                                ```
+```
+
+---
+---
+---
+
+## code gen default in alart ##
+我記得我之前寫過一樣的東西...在上面
+[as mentioned above](#playwright-pageonce-use-to)
+結果我今天又遇到問題....~~我是多久沒有寫了~~
+好啦!!所以我們就該知道 我要說明的八?
+就適當用 codegen的時候 只要是遇到
+`confirm() 預設就是 dismiss()...`
+所以你如果用顯示的方式來看 也是看他跳出來
+但是最後還是取消...
+~~真的不能有一絲放鬆也...~~
+
+## page function ##
+
+這個是我在測試上面的東西
+[playwright dialog](https://segmentfault.com/a/1190000044878818)
+> playwright 框架可以監聽dialog事件，不管你alert 什麼時候彈出來，監聽到事件就自動處理了
+
+(在調整 js的 dialog 一直沒有按下成功..)
+然後我就想看一下 等待(在 點選完alart pop windows 時後)
+後來跳出
+```
+SyntaxError: /mnt/d/tem/WEB-auto/tests/setdate.spec.js: Unexpected reserved word 'await'. (70:4)
+68 |   page.on('dialog', dialog => {
+69 |     // console.log(`Dialog message: ${dialog.message()}`);
+>
+70 |     await page.waitForTimeout(1000);                                                                                             |     ^
+71 |     dialog.dismiss().catch(() => {});
+72 |   });
+73 |
+at setdate.spec.js:70
+68 |   page.on('dialog', dialog => {
+69 |     // console.log(`Dialog message: ${dialog.message()}`);
+>
+70 |     await page.waitForTimeout(1000);                                                                                             |    ^
+71 |     dialog.dismiss().catch(() => {});
+72 |   });
+73 |
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+```
+雖然有點不同 但是我還是 把東西貼上來 (ヾ(≧▽≦*)o)
+![dialog_no_await](./pic/dialog_no_await.png)
+>  真心覺得好險有 錯誤MODE...不然我會整個不知道要幹嘛...
+
+
