@@ -12,7 +12,7 @@ function_check2(){
     check_ans="";
     tem_flag=1;
     send_num=0;
-    # echo "[${check_ans}]"
+    #echo "[${check_ans}]"
     # echo " IP : ${var_ip}"
     #read -p " continue using this IP ( press y or n)" check_ans
     while [[ ${tem_flag} == 1 ]]

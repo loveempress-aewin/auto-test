@@ -29,25 +29,20 @@ function_detch_file(){
 funciton_continue_using_ip(){
     bash ${file_check};
     ### this is not use --> because every case maybe have diff result
-    ### todo [0] : contiune or new
     #function_check;
     #local res=$?;
     res=$?;
     if [[ ${res} == 100 ]]
     then
-        # echo "get yes 100";
         echo " you use ip is [${var_ip}]"
     else
-        # echo " get no 111" ;
         function_resetIP;
     fi
     #echo "in function_write  result : ${res}";
     ##echo "[${check_ans}]" ### old use the function
-    ### todo [1] : write ip in a global variable
 }
 
 function_resetIP(){
-    ###todo set ip
     read -p " input IP address : " var_ip;
     echo " confirm that the IP you want to use [${var_ip}]";
     bash ${file_check};
