@@ -8,7 +8,7 @@
 ###}}}
 #echo -e "set ip"
 
-file_check="./check.sh"
+file_check="./auto_check.sh"
 
 function_detch_file(){
     ### todo [0] : check if the file exists
@@ -49,9 +49,10 @@ function_resetIP(){
     local res=$?;
     if [[ ${res} == 100 ]]
     then
-        echo "// @ts-check" > javascript_ip.js ;
-        # echo 'export let ip="${var_ip}"'>> javascript_ip.js;
-        echo "export let ip=\"${var_ip}\"">> javascript_ip.js;
+        # echo "// @ts-check" > javascript_ip.js ;
+        # ### echo 'export let ip="${var_ip}"'>> javascript_ip.js;
+        # echo "export let ip=\"${var_ip}\"">> javascript_ip.js;
+        echo -e " // @ts-check\nexport let ip=\"${var_ip}\"">javascript_ip.js
         var_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3|cut -d '"' -f 2)
         echo " [${var_ip}]";
     else
