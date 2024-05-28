@@ -28,12 +28,12 @@ note/dev_process/
 # Tue Feb  6 11:22:13 CST 2024
 /UPLOADFILES/*
 #!/UPLOADFILES/IS-5121_v1.1.18N.ima
-!/UPLOADFILES/ANCHOR.java
+# !/UPLOADFILES/ANCHOR.java
 ## need give  a folder
 
 # Tue Feb 20 14:55:30 CST 2024
 #pic/DR.delay.catch.ip.png
-## because the pic always change ...but I didn't touch it == 
+## because the pic always change ...but I didn''t touch it ==
 ### because need to up gitlab....  Wed Feb 21 16:26:31 CST 2024
 
 ## Tue Feb 27 15:01:43 CST 2024
@@ -50,3 +50,7 @@ tem_linux_bbu/
 
 .vscode/
 
+### Tue May 21 15:41:36 CST 2024
+# /UPLOADFILES/*.*
+### because the anchor.java again to track
+### == my error ....plz look 32Line.... I too many time not do the auto test...

@@ -1598,3 +1598,6 @@ You may need to escape symbols like "$" or "*" and quote the arguments.
 ---
 ---
 
+#  bash-share-variables-export  #
+這裡我測試過部分
+

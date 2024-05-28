@@ -34,7 +34,7 @@ funciton_continue_using_ip(){
     res=$?;
     if [[ ${res} == 100 ]]
     then
-        echo " you use ip is [${var_ip}]"
+        echo -e "\e[1;31;40m[${var_ip}]\e[0m"
     else
         function_resetIP;
     fi
@@ -54,7 +54,7 @@ function_resetIP(){
         # echo "export let ip=\"${var_ip}\"">> javascript_ip.js;
         echo -e " // @ts-check\nexport let ip=\"${var_ip}\"">javascript_ip.js
         var_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3|cut -d '"' -f 2)
-        echo " [${var_ip}]";
+        echo -e "  \e[1;31;40m[${var_ip}]\e[0m";
     else
         echo " rewrite " ;
         function_resetIP;
