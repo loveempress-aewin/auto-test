@@ -33,5 +33,5 @@ function_change_password(){
     function_catch_version;
 }
 
-# echo "/d/tem/WEB-auto/auto_get_version.sh -- origin_ip : [${origin_ip}]"
-# echo "/d/tem/WEB-auto/auto_get_version.sh -- catch_version : ${catch_version}";
+# echo " -- origin_ip : [${origin_ip}]"
+# echo " -- catch_version : ${catch_version}";

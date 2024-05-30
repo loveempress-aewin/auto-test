@@ -46,17 +46,17 @@ function_P_bar(){
 # else
 #     echo "XXXXXXX";
 # fi
-# echo "/d/tem/WEB-auto/auto_update_bmc.sh -- origin_ip : [${global_ip}]"
-# echo "/d/tem/WEB-auto/auto_update_bmc.sh -- catch_version : ${catch_version}";
+# echo " -- origin_ip : [${global_ip}]"
+# echo " -- catch_version : ${catch_version}";
 # until [[ ${execute} == +([1-9]) ]];do
 auto_update_bmc_flag=0;
 function_auto_switch_update_file(){
     echo "";
-    # . ./auto_get_version.sh
     . ./auto_parse_version.sh;
-    echo "parse_name : ${parse_name}";
+    # echo "now bmc version : ${parse_name}";  #### dev debug
     change_version=$(ls UPLOADFILES/|grep -v "${parse_name}");
-    echo " change_version is : today is meet him... HBD  ${change_version}";
+    date;
+    echo "will change file : ${change_version}";
     if [[ "$change_version" == "" ]];then
         echo "  /mnt/d/tem/WEB-auto/auto_update_bmc --> CHANGE VERSION === '' ";
         if [[ "${auto_update_bmc_flag}" == 0 ]];then
@@ -77,9 +77,10 @@ until [[ ${execute} == +([0-9]) ]];do
     read -p " execute how many times ? (input number) : " execute
     if [[ ${execute} -eq 0 ]]
     then
-        echo " error didnt input 0";
+        # echo " error didnt input 0";
+        echo "";
     else
-        echo " VV"
+        echo "  ";
     fi
 done;
 for i in $(seq 1 ${execute})
@@ -106,7 +107,6 @@ do
     # for ((var_nnm=0 ; var_nnm<121 ; var_nnm++ ));do
     for var_num in $(seq ${var_nmm} ${var_max});do
         # echo -ne ''
-        # echo " var_nnm";
         sleep 1;
         function_P_bar ${var_num} ${var_max};
     done

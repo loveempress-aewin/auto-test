@@ -14,6 +14,7 @@ if [[ "${ip}" == "" ]];then
 fi
 
 . ./auto_parse_version.sh;
+echo "now bmc version : ${parse_name} "
 echo "${ip}";
 # echo -e " \n\n parse_name : ${parse_name}  \n\n ";
 function_same_filename(){
@@ -21,12 +22,12 @@ function_same_filename(){
     # ls UPLOADFILES/|grep "${parse_name}";
     option_file_0=$(ls UPLOADFILES/|grep "${parse_name}");
     if [[ "$?" == 0 ]];then
-        echo "have same name";
+        # echo "have same name";
         # option_file_0=$(ls UPLOADFILES/|grep "${parse_name}");
         option_file_2=$(ls UPLOADFILES/|grep -v "${parse_name}");
         function_let_user_choose;
     else
-        echo "no like name file";
+        # echo "no like name file";
         function_no_like_file;
     fi
 }

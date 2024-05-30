@@ -45,7 +45,7 @@ function_parse(){
     ######int parse_1~4 hex => decimal
     parse_1=$((16#${number_1})); parse_2=$((16#${number_2}));
     parse_3=$((16#${number_3})); parse_4=$((16#${number_4}));
-    echo "${parse_1}   ${parse_2}   ${parse_3}   ${parse_4}  ";
+    # echo "${parse_1}   ${parse_2}   ${parse_3}   ${parse_4}  ";  ## dev tr mode
     parse_name=${parse_1}.${parse_2}.$((${parse_4}*100+${parse_3}));    #char *[] parse_name
 
     #need_version=${need_version} $(echo "${catch_version}"|cut -d ' ' -f 3);
