@@ -14,10 +14,10 @@ const playwright = require("playwright");
 //
 //});
 
-test('kvm',async () => {
-	const browser = await playwright.chromium.launch();
-	const context = await browser.newContext();
-	const page = await context.newPage();
+test.skip('kvm-tetest',async () => {
+	// // const browser = await playwright.chromium.launch();
+	// const context = await browser.newContext();
+	// const page = await context.newPage();
 	await page.goto('https://www.msn.com/zh-tw/news/living/%E8%8B%97%E6%A0%97%E4%B8%89%E7%81%A39-2%E5%BA%A6-%E5%90%B3%E5%BE%B7%E6%A6%AE-%E5%86%B7%E7%A9%BA%E6%B0%A327%E6%97%A5%E7%B7%A9%E6%85%A2%E6%B8%9B%E5%BC%B1/ar-BB1iSwML?ocid=entnewsntp&pc=U531&cvid=7a9fa0386821496d8ef17397bcb84441&ei=26');
 
 	// Important to "start" this promise before the window.open() could happen
@@ -40,8 +40,8 @@ test('kvm',async () => {
 });
 
 
-test.only('kvm1', async ({ page }) => {
-	browser = playwright.chromium.launch(channel="chrome");
+test.only('kvm', async ({ page }) => {
+	// browser = playwright.chromium.launch(channel="chrome");
 
 	await page.goto('https://'+ip+'/#login');
 	await page.getByPlaceholder('Username').fill(InputUser);
@@ -49,17 +49,13 @@ test.only('kvm1', async ({ page }) => {
 	await page.getByPlaceholder('Password', { exact: true }).fill('11111111');
 	await page.getByRole('button', { name: 'Sign me in' }).click();
 	const response = await expect(page).toHaveURL('https://'+ip+'/#dashboard');
+
+
 	await page.goto('https://'+ip+'/#remote_control');
 	const page1Promise = page.waitForEvent('popup');
 	await page.getByRole('button', { name: ' Launch H5Viewer' }).click();
-	// only this line is so weird because  (F08E) 
+	// only this line is so weird because  (F08E)
 	const page1 = await page1Promise;
-	await page.waitForTimeout(2000);
-	await page1.locator('#cursor_canvas').click({
-		position: {
-			x: 24,
-			y: 540
-		}
-	});
-	await page1.waitForTimeout(2000);
+	await page1.waitForTimeout(5000);
+    await page1.screenshot({path:'screenshot/kvm.png',fullPage:true});
 });
