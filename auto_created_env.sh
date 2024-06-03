@@ -4,7 +4,7 @@
 ###
 if [ ! -d ./UPLOADFILES/ ];
 then
-    mkdir UPLOADFILES/
+    mkdir  -p UPLOADFILES/
 fi
 if [ ! -f ./UPLOADFILES/ANCHOR.java ]
 then
@@ -17,4 +17,16 @@ then
     echo "	*/">>./UPLOADFILES/ANCHOR.java;
     echo "	}">>./UPLOADFILES/ANCHOR.java;
     echo "}">>./UPLOADFILES/ANCHOR.java;
+fi
+# if [[ ! -d ./result ]];then
+#     mkdir result/;
+# fi
+if [[ ! -d ./result/bbu ]];then
+    mkdir -p ./result/bbu/;
+fi
+if [[ ! -d ./result/TEST_RECORD/Sensors/ ]];then
+    mkdir -p ./result/TEST_RECORD/Sensors/;
+fi
+if [[ ! -d ./result/TEST_RECORD/Log_Reports/ ]];then
+    mkdir -p ./result/TEST_RECORD/Log_Reports/;
 fi

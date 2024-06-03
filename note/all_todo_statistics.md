@@ -5,13 +5,13 @@
 | com2                        | X    |
 | ipmitool                    | V    |
 | sensor value                | V    |
-| log in webui                | V    |
+| log in webui                | X    |
 | remote/manual power control | X    |
 | bmc i2c bus                 | X    |
 | bmc WDT                     | V    |
 | update bmc WEBUI            | V    |
 | update bmc(yafu)            | X    |
-| KVM                         | V    |
+| KVM                         | X    |
 | SOL                         | X    |
 | VBAT                        | V    |
 | update bios(webui)          | V    |
@@ -113,7 +113,16 @@
 | 17 ssh                                      | X   | 17-security              |                                         |
 | visual syslog                               | X   | visual-syslog server     |                                         |
 
-BBU : 11 V 12 x --> 47%
-sd1 : 58 V 28 X --> 68%
-all : 69 V      --> 63%
 
+BBU items : 23
+sd10 items : 86
+all items : 109
+BBU : 10 V 13 x --> 43%
+sd1 : 58 V 28 X --> 68%
+all : 69 V 41 X  -->62%
+
+Fri May 31 13:58:06 CST 2024
+// KVM --> X
+BBU :  9 V 14 x --> 39%
+sd1 : 58 V 28 X --> 68%
+all : 69 V 41 X  -->62%
