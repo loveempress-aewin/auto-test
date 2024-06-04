@@ -10,7 +10,7 @@ test.use({
 	ignoreHTTPSErrors: true,
   });
 
-//test.describe.configure({mode:' serial' });   // => in doc it's not 
+//test.describe.configure({mode:' serial' });   // => in doc it's not
 //let page;
 const InputUser="admin";
 const InputPassword="11111111";
@@ -39,7 +39,7 @@ test.beforeEach('login', async({page,request })=>{
 	console.log(" username: " + InputUser + " | password : " + InputPassword );
 	console.log(" validate : " + loginFlag );
 	//await page.waitForTimeout(4488);
-	const response = await page.waitForRequest(url => url.url().includes('dashboard'));	
+	const response = await page.waitForRequest(url => url.url().includes('dashboard'));
 	//console.log(response);
 	if(await page.getByText('Login Failed').isVisible()){
 		console.log("========================================");
@@ -69,7 +69,7 @@ test.beforeEach('login', async({page,request })=>{
 //	await page.goto('https://'+ip+'/#login');
 //	await page.goto('https://'+ip+'/#maintenance/firmware_update_wizard');
 //	await page.locator('#mainfirmware_image').setInputFiles(love_firemware_name);
-//	await page.getByRole('button', { name: 'Start firmware update' }).click();	
+//	await page.getByRole('button', { name: 'Start firmware update' }).click();
 //});
 //test('run 4',async ({page}) => { });
 
@@ -79,7 +79,7 @@ test.beforeEach('login', async({page,request })=>{
 //}
 test('run 5 -- settings/',async ({page}) => {
 	test.setTimeout(420000);
-	
+
 	/*
 	 *	run 1
 	 *	=====  sensor	====
@@ -91,8 +91,8 @@ test('run 5 -- settings/',async ({page}) => {
 	//[screenshot](https://testersdock.com/playwright-screenshot-capture/#:~:text=Go%20to%20Playwright.config.ts%20file%20and%20under%20use%20add,in%20Playwright%20provides%20other%20options%20to%20capture%2Fmanipulate%20screenshots.)'
 	//await page.getByRole('heading', { name: 'Sensor Reading Live reading' });
 	//await page.getByText('Sensor Reading ').isVisible();
-	await page.getByRole('heading', { name: 'Sensor Reading Live reading' }) 
-	//  Error: locator.isVisible: Error: strict mode violation: getByText('Sensor Reading ') resolved to 3 elements:            
+	await page.getByRole('heading', { name: 'Sensor Reading Live reading' })
+	//  Error: locator.isVisible: Error: strict mode violation: getByText('Sensor Reading ') resolved to 3 elements:
 	await page.screenshot({path:'screenshot/sensor.png',fullPage:true});
 
 
@@ -114,7 +114,7 @@ test('run 5 -- settings/',async ({page}) => {
 	await page.goto('https://'+ip+'/#login');
 	await page.waitForTimeout(2000);
 	await page.goto('https://'+ip+'/#logs/audit-log');
-	
+
 	//await page.pause();
 	await page.waitForTimeout(5000);
 	await page.screenshot({path:'screenshot/audit-log.png',fullPage:true });
@@ -178,7 +178,7 @@ test('run 5 -- settings/',async ({page}) => {
 
 	/*
 	 *	& run 7 &
-	 *	=============  ================== 
+	 *	=============  ==================
 	 *
 	 */
 
@@ -452,11 +452,11 @@ test('run 5 -- settings/',async ({page}) => {
 	await page.waitForTimeout(2000);
 
 });
-test('run' , async({page}) => { 
+test('run' , async({page}) => {
 
 });
 /* {{{
-test('run 6 -- settings/ext_users ' , async({page}) => { 
+test('run 6 -- settings/ext_users ' , async({page}) => {
 test('run 7 -- ',async({page }) =>{ });
 test('run 8 -- log' ,async({page}) => { });
 test('run 9 -- media ' , async({page}) => { });
