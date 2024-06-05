@@ -29,16 +29,6 @@ file_get_version="./auto_get_version.sh"
 # ip=origin_ip;
 # ip=${origin_ip};
 # echo "ip -====================--> ${ip}";
-function_P_bar(){
-    ### if long time need to change variable (max) --loveloveempress
-    let love_p=(${1}*100/${2}*100)/100;
-    let love_d=(${love_p}*4)/10;
-    # let love_l=40-${love_d};
-    let love_l=40-${love_d};
-    _aria=$(printf "%${love_d}s");
-    _caroline=$(printf "%${love_l}s");
-    printf "\r Progress : [${_aria// /▇} ${_caroline// /-}] ${love_p}%%";
-}
 # catch_version=$(ipmitool -I lanplus -H "${ip}" -U admin -P 11111111 raw 0x1e 0x01 0x00);
 # if [[ "$?" == 0 ]]
 # then
@@ -105,12 +95,13 @@ do
     var_sum=100;
     var_max=120;
     # for ((var_nnm=0 ; var_nnm<121 ; var_nnm++ ));do
-    for var_num in $(seq ${var_nmm} ${var_max});do
-        # echo -ne ''
-        sleep 1;
-        function_P_bar ${var_num} ${var_max};
-    done
-    printf '\nFinished!\n' ;
+    # for var_num in $(seq ${var_nmm} ${var_max});do
+    #     # echo -ne ''
+    #     sleep 1;
+    #     function_P_bar ${var_num} ${var_max};
+    # done
+    # printf '\nFinished!\n' ;
+    ./auto_function_process.sh 120;
     $(npx playwright test tests/change.spec.js --headed>> log.txt)
     if [ ${i} -eq ${execute} ];
     then
