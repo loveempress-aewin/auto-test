@@ -13,7 +13,6 @@ if test $# -gt 0;then
 fi
 function_error(){
     while (( ${count} < ${max} ));do
-        printf "${count}\n";
         let count++;
         sleep 5;
         function_elist;
