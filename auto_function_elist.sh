@@ -28,11 +28,13 @@ function_elist(){
     if [[ "${sel_elist}" == "" ]];then
         printf "EMPTY";
         sel_elist="SEL has no entries";
+        sel_elist_count=0;
     else
         # printf "${sel_elist}\n\n";
         printf "\n\n";
     fi
     # printf "${sel_elist}";
+    sel_elist_count=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist|wc -l);
 }
 function_elist;
 # return ${sel_elist};

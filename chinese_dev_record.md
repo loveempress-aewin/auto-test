@@ -1601,3 +1601,128 @@ You may need to escape symbols like "$" or "*" and quote the arguments.
 #  bash-share-variables-export  #
 這裡我測試過部分
 
+
+
+
+(need to write )
+
+---
+---
+---
+
+# bash_sel_elist_and_count #
+天啊 終於又有時間來寫技術文章了....
+最近 在重新用我的大專案
+Fri Jun  7 14:26:16 CST 2024
+我今天不但重構了很多地方 同時也重寫了CODE
+~~拜託 程式女王不是假的!!~~
+然後最近學道超級多的方式
+變數 分割檔案 檔案傳變數 return-rule S的synonym
+沒辦法 誰叫我一段時間回來 才發現 我看不懂我的程式在寫傻~~(???)~~
+因為 每一段時間我寫的東西 都是不同心境 寫法都不同 ~~(所謂的女人心海底針?)~~
+~~我才發現 我寫得好像有分連2個時期 (仙女木時期) & (WHAT時期)~~
+好啦 把東西拉回來 這次是要說
+如果我的 `ipmitool sel elist` 是 *SEL no entries*
+那在 wc中 卻沒顯示東西
+但是我在 bash 下 直接用 卻有數值(可見 他就是一種騙人的東西?)
+所以我沒有深刻研究
+如同圖片![elist_count](./pic/ipmitool_elist_wc.png)
+```bash
+###### auto_function_elist.sh
+global_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);
+count=0;
+max=1;     ####  5121 real times --> 3
+if test $# -gt 0;then max="$1"; fi
+function_error(){
+    while (( ${count} < ${max} ));do
+        let count++;
+        sleep 5;
+        function_elist;
+    done
+    if (( "${count}" == "${max}" ));then
+        echo " BMC status : power off ";
+        exit 234;
+    fi
+}
+function_elist(){
+    sel_elist=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist);
+    if (( "$?" > 0 ));then
+        function_error;
+    fi
+    if [[ "${sel_elist}" == "" ]];then
+        printf "EMPTY";
+        sel_elist="SEL has no entries";
+    else
+        printf "\n\n";
+    fi
+    sel_elist_count=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist|wc -l);
+}
+function_elist;
+```
+```bash
+###### ./auto_bbu_watchdog.sh
+global_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);
+function_watchdog_get(){
+    if [[ ! -f ./result/watchdog.txt ]];then
+        date>>./result/watchdog.txt;
+        # sel_elist=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist);
+    else
+        # echo "ok not overwright";
+        date>>./result/watchdog.txt;
+    fi
+    # . ./auto_function_elist.sh
+    # printf "${sel_elist}">>./result/watchdog.txt;
+    watchdog=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 mc watchdog get);
+    printf "${watchdog}\n\n">>./result/watchdog.txt
+}
+. ./auto_function_elist.sh 4;
+local_elist_count_old="${sel_elist_count}";
+printf "${local_elist_count_old}\n">>./result/watchdog.txt;
+printf "\n========start sel elist========\n${sel_elist}\n========\n\n">./result/watchdog.txt;
+function_watchdog_get;
+printf "and now we need to set watchdog --by auto test\n">>./result/watchdog.txt;
+ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 raw 0x06 0x24 0x04 0x03 0x01 0x10 0x64 0x00;
+# # echo "ok set watchdog";
+function_watchdog_get;
+watchdog_reset=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 mc watchdog reset);
+printf "${watchdog_reset}">./result/watchdog_reset.txt
+printf "${watchdog_reset}\n">>./result/watchdog.txt;
+function_watchdog_get;
+sleep 2;
+function_watchdog_get;
+./auto_function_process.sh 70;
+printf "================\n">>./result/watchdog.txt;
+. ./auto_function_elist.sh 4;
+local_elist_count_end="${sel_elist_count}";
+printf "${local_elist_count_end}\n">>./result/watchdog.txt;
+printf "${sel_elist}">>./result/watchdog.txt
+```
+我這裡的想法是
+他應該就是
+沒有資訊後 WC會自動補充0
+但是為什麼沒有當成變數就很奇怪了....
+
+### solution_ipmitool_elist_wc ###
+```bash
+function_elist(){
+    sel_elist=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist);
+    if (( "$?" > 0 ));then
+        function_error;
+    fi
+    if [[ "${sel_elist}" == "" ]];then
+        printf "EMPTY";
+        sel_elist="SEL has no entries";
+        sel_elist_count=0;
+    else
+        # printf "${sel_elist}\n\n";
+        printf "\n\n";
+    fi
+    # printf "${sel_elist}";
+    sel_elist_count=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist|wc -l);
+}
+```
+add `sel_elist_count=0`
+
+---
+---
+---

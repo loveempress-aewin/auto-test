@@ -18,6 +18,8 @@ function_watchdog_get(){
     printf "${watchdog}\n\n">>./result/watchdog.txt
 }
 . ./auto_function_elist.sh 4;
+local_elist_count_old="${sel_elist_count}";
+printf "${local_elist_count_old}\n">>./result/watchdog.txt;
 printf "\n========start sel elist========\n${sel_elist}\n========\n\n">./result/watchdog.txt;
 function_watchdog_get;
 printf "and now we need to set watchdog --by auto test\n">>./result/watchdog.txt;
@@ -33,4 +35,6 @@ function_watchdog_get;
 ./auto_function_process.sh 70;
 printf "================\n">>./result/watchdog.txt;
 . ./auto_function_elist.sh 4;
-printf "${sel_elist}">>./result/watchdog.txt
+local_elist_count_end="${sel_elist_count}";
+printf "${local_elist_count_end}\n">>./result/watchdog.txt;
+printf "${sel_elist}">>./result/watchdog.txt；
