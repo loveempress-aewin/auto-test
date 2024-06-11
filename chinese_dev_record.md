@@ -1726,3 +1726,50 @@ add `sel_elist_count=0`
 ---
 ---
 ---
+# bash save tow file and wired #
+我這裡要說的是 我在寫入檔案的時候 出現大問題!!!
+就是當我寫完後 我隔了一個放假日
+回來看我的result
+發現多了一個`watchdog.txt；`
+```bash
+function_execute(){
+    . ./auto_function_elist.sh 4;
+    local_elist_count_old="${sel_elist_count}";
+    printf "${local_elist_count_old}\n">>./result/watchdog.txt;
+    printf "\n========start sel elist========\n${sel_elist}\n========\n\n">./result/watchdog.txt;
+    function_watchdog_get;
+    printf "and now we need to set watchdog --by auto test\n">>./result/watchdog.txt;
+    ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 raw 0x06 0x24 0x04 0x03 0x01 0x10 0x64 0x00;
+    # # echo "ok set watchdog";
+    function_watchdog_get;
+    watchdog_reset=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 mc watchdog reset);
+    printf "${watchdog_reset}">./result/watchdog_reset.txt
+    printf "${watchdog_reset}\n">>./result/watchdog.txt;
+    function_watchdog_get;
+    sleep 2;
+    function_watchdog_get;
+    ./auto_function_process.sh 10;
+    printf "================\n">>./result/watchdog.txt;
+    . ./auto_function_elist.sh 4;
+    local_elist_count_end="${sel_elist_count}";
+    printf "${local_elist_count_end}\n">>./result/watchdog.txt;
+    printf "${sel_elist}">>./result/watchdog.txt；
+    let tem_flag++;
+}
+```
+我一追究發現 原來 看到問題了嗎?
+倒數第2行 中文真的....==
+
+## detail --UTF8 ##
+深入了解一下他裡面的邏輯
+`#x3B utf-8-unix` => `;`
+`#xEF #xBC #x9B utf-8-unix` => `；`
+所以 就出現問題
+
+### solution  ###
+很簡單 這就是 中文英文 code 的問題
+所以 就把 `#xEFBC9B --> #x3B`
+
+---
+---
+---
