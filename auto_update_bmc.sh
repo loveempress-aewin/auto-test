@@ -1,26 +1,32 @@
 #! /bin/bash
 ### created	:	Tue May 21 11:42:11 CST 2024
-### date	:	Tue May 28 14:49:16 CST 2024
+### date	:	Tue Jun 11 17:19:52 CST 2024
 ### auto	:	loveloveempress
-
 ### TODO:check have environment
 file_create_environment="./auto_created_env.sh"
-# function_create_env(){
-#     bash
-# }
 bash ${file_create_environment};
 ### TODO:check ip address (input)
 file_setip="./auto_ip.sh";
 bash ${file_setip};
 . ./auto_get_version.sh
 ### TODO:input how loop number (input)
+until [[ ${execute} == +([0-9]) ]];do
+    read -p " execute how many times ? (input number) : " execute
+    if [[ ${execute} -eq 0 ]]
+    then
+        # echo " error didnt input 0";
+        echo "";
+    else
+        echo "  ";
+    fi
+done;
 # update_times=0;
 #######read -p "how many times do you want to update BMC?" update_times;
 ### TODO:check update file (have two files)
-file_set_bmc_file="./auto_set_update_file_rule.sh";
-bash ${file_set_bmc_file};
-file_set_update_file="./auto_set_update_file.sh";
-bash ${file_set_update_file};
+. ./auto_set_update_file_rule.sh ${execute};
+# file_set_update_file="./auto_set_update_file.sh";
+# bash ${file_set_update_file};
+. ./auto_set_update_file.sh ${execute};
 ### TODO:check ipmitool can use
 ### TODO:check bmc version
 file_get_version="./auto_get_version.sh"
@@ -63,16 +69,6 @@ function_auto_switch_update_file(){
     echo "change_version --> ${change_version}";
     echo -e " parse_name -->  ${parse_name} ";
 }
-until [[ ${execute} == +([0-9]) ]];do
-    read -p " execute how many times ? (input number) : " execute
-    if [[ ${execute} -eq 0 ]]
-    then
-        # echo " error didnt input 0";
-        echo "";
-    else
-        echo "  ";
-    fi
-done;
 for i in $(seq 1 ${execute})
 do
     if [[ "${i}" -gt 1 ]];then

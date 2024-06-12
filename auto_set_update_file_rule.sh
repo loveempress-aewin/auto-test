@@ -1,6 +1,6 @@
 #!/bin/bash
 ### created	:	Tue May 21 13:35:33 CST 2024
-### date	:	Tue May 21 14:47:49 CST 2024
+### date	:	Tue Jun 11 17:20:14 CST 2024
 ###
 limit_count=0; ###[ref](old_updateBMC)
     OIFS="$IFS";
@@ -21,8 +21,12 @@ function_no_extra_files(){
                 rm ./UPLOADFILES/$file;;
         esac
     done
-    function_error;
+    function_more_than_two;
+}
+function_more_than_two(){
     limit_count=$(ls ./UPLOADFILES/|wc -l);
+    local_number="$1";
+    printf "\n${local_number}\n"
 
     ###### displays file count statu
     if [[ ${limit_count} -gt 2 ]]
@@ -48,13 +52,15 @@ function_no_extra_files(){
             fi
         done
     done
+    function_display_file;
+}
+function_display_file(){
     ### display corresponding files
     for file in $(ls ./UPLOADFILES)
     do
         count_uploadfile=$((${count_uploadfile}+1));
         echo  "[${count_uploadfile}    ->    ${file}]";
     done
-    function_error;
 }
 function_error(){
     limit_count=$(ls ./UPLOADFILES/ |wc -l)
@@ -64,4 +70,13 @@ function_error(){
         echo -e "==============================\n| ERROR!!! need 2 files      |\n| you only put one file      |\n=============================="; exit 111;
     fi
 }
+# auto_rule_flag=0;
+# if test $# -gt 0;then auto_rule_flag="$1";fi
+# if [[ $# -gt 0 ]];then
+auto_rule_flag="$1";
+# else
 function_no_extra_files;
+if [[ ${auto_rule_flag} > 1 ]];then
+    function_error;
+fi
+# printf "\n auto_rule_flag~~~== : ${auto_rule_flag}\n\n";
