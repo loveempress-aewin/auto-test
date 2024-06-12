@@ -48,6 +48,7 @@ function_parse(){
     # echo "${parse_1}   ${parse_2}   ${parse_3}   ${parse_4}  ";  ## dev tr mode
     parse_name=${parse_1}.${parse_2}.$((${parse_4}*100+${parse_3}));    #char *[] parse_name
 
+    printf " right now version : [${parse_name}]\n";
     #need_version=${need_version} $(echo "${catch_version}"|cut -d ' ' -f 3);
     #echo " out : ";
     #echo "${need_version}";											#dev verification

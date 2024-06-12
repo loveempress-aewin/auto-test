@@ -1,7 +1,8 @@
 #!/bin/bash
 ###	created	:	Tue May 28 14:46:05 CST 2024
-### date	:	Tue May 28 14:46:18 CST 2024
+### date	:	Tue Jun 11 17:16:14 CST 2024
 ### auto	:	love-codeing-queen
+auto_set_update_file_local_number="$1";
 ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);
 if [[ "$?" == 0 ]];then
     echo "  ";
@@ -14,7 +15,7 @@ if [[ "${ip}" == "" ]];then
 fi
 
 . ./auto_parse_version.sh;
-echo "now bmc version : ${parse_name} "
+# echo "now bmc version : ${parse_name} "
 echo "${ip}";
 # echo -e " \n\n parse_name : ${parse_name}  \n\n ";
 function_same_filename(){
@@ -76,5 +77,21 @@ function_let_user_choose(){
     done
 
 }
+function_1_update(){
+    limit_count=$(ls ./UPLOADFILES/|wc -l);
+    if [[ ${limit_count} == 1 ]];then
+        option_file_0=$(ls UPLOADFILES/);
+        printf "// @ts-check\nexport let updateBMCfile=\"${option_file_0}\"">bmc_update.js
+        printf "\nwrite --> ${option_file_0}";
+    else
+        function_same_filename;
+    fi
+}
 
-function_same_filename;
+# function_same_filename;
+# function_1_update;
+if [[ "${auto_set_update_file_local_number}" == 1 ]];then
+    function_1_update;
+else
+    function_same_filename;
+fi

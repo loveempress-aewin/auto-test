@@ -58,4 +58,11 @@ tem_linux_bbu/
 
 ### Mon Jun  3 16:11:34 CST 2024
 result/*
+
+##### Wed Jun 12 10:39:04 CST 2024
+##### this is playwright didnt work and update the latest version and auto generator
 tem_*
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
