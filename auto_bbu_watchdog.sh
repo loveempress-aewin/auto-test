@@ -1,10 +1,11 @@
 #!/bin/bash
 ### created	:	Thu Jun  6 10:37:50 CST 2024
-### date	:	Tue Jun 11 13:33:02 CST 2024
+### date	:	Wed Jun 12 11:17:36 CST 2024
 ### auto	:	lovecoding-queen
 ###
 global_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);
 tem_flag=0;
+printf "\n==========NOW AUTO TEST WATCHDOG ============\n";
 printf "">./result/watchdog.txt;
     . ./auto_function_elist.sh 4;
     local_elist_count_old="${sel_elist_count}";

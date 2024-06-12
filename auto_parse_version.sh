@@ -1,6 +1,6 @@
 #!/bin/bash
 ###	created	:	Tue May 28 14:42:51 CST 2024
-###	date	:	Tue May 28 14:43:00 CST 2024
+###	date	:	Wed Jun 12 10:54:29 CST 2024
 ###	auto	:	love-coding-queen
 auto_parse_flag=0;
 global_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);

@@ -1,6 +1,6 @@
 #! /bin/bash
-### created	:	Tue May 21 11:42:11 CST 2024
-### date	:	Tue Jun 11 17:19:52 CST 2024
+### created	:	Wed Jun 12 11:00:32 CST 2024
+### date	:	.
 ### auto	:	loveloveempress
 ### TODO:check have environment
 file_create_environment="./auto_created_env.sh"
@@ -8,7 +8,8 @@ bash ${file_create_environment};
 ### TODO:check ip address (input)
 file_setip="./auto_ip.sh";
 bash ${file_setip};
-. ./auto_get_version.sh
+# . ./auto_get_version.sh
+. ./auto_parse_version.sh ;
 ### TODO:input how loop number (input)
 until [[ ${execute} == +([0-9]) ]];do
     read -p " execute how many times ? (input number) : " execute
@@ -46,6 +47,9 @@ file_get_version="./auto_get_version.sh"
 # echo " -- catch_version : ${catch_version}";
 # until [[ ${execute} == +([1-9]) ]];do
 auto_update_bmc_flag=0;
+#### this part use another new expand
+file_expand="./auto_expand.sh"
+bash ${file_expand};
 function_auto_switch_update_file(){
     echo "";
     . ./auto_parse_version.sh;
@@ -66,7 +70,10 @@ function_auto_switch_update_file(){
         fi
     fi
     echo -e "// @ts-check\nexport let updateBMCfile=\"${change_version}\"">bmc_update.js
+    # echo "change_version --> ${change_version}";
+    # echo -e " parse_name -->  ${parse_name} ";
 }
+printf "\n================AUTO UPDATE BMC================\n";
 for i in $(seq 1 ${execute})
 do
     if [[ "${i}" -gt 1 ]];then

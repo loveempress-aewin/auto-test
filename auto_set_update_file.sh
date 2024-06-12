@@ -53,7 +53,7 @@ function_no_like_file(){
 function_let_user_choose(){
     # echo "${option_file_0}    +++ ${option_file_2} ";
     detech_flag=1;
-    echo " Select the file you want to update ";
+    echo " Select the file you want to update (press 1 or 2)";
     echo -e "[1] ---> ${option_file_0}\n\n[2] ---> ${option_file_2}";
     while [[ ${detech_flag} == 1 ]]
     do

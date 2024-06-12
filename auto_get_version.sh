@@ -6,6 +6,10 @@
 global_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);
 # echo "ip ---> ${global_ip}";   ### sometimes ...it is will disappear
 # echo "ip -====================--> ${ip}";
+function_change_password(){
+    $(npx playwright test tests/change.spec.js --headed>> log.txt)
+    function_catch_version;
+}
 catch_version=$(ipmitool -I lanplus -H "${global_ip}" -U admin -P 11111111 raw 0x1e 0x01 0x00);
 if [[ "$?" == 0 ]]
 then
@@ -28,10 +32,6 @@ echo " /mnt/d/tem/WEB-auto/auto_get_version.sh--> IP : [${global_ip}]"
 # fi
 . ./auto_parse_version.sh;
 }
-function_change_password(){
-    $(npx playwright test tests/change.spec.js --headed>> log.txt)
-    function_catch_version;
-}
-
+. ./auto_parse_version.sh;
 # echo " -- origin_ip : [${origin_ip}]"
 # echo " -- catch_version : ${catch_version}";

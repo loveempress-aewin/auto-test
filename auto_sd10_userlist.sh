@@ -8,9 +8,9 @@ global_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3| cut -d '"' -f 2);
 user_list_0=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 user list)
 # echo -en "love me \r";
 # echo -e "1314 \r";
-printf "${user_list_0}">>./result/user_list_0.txt;
-grep -i 'admin' result/user_list.txt>user_admin_0.txt;
-grep 'false' result/user_list_0.txt
+printf "${user_list_0}">./result/user_list_0.txt;
+grep -i 'admin' result/user_list_0.txt>./result/user_admin_0.txt;
+grep 'false' ./result/user_admin_0.txt;
 if (( "$?" == 0 ));then
     ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 channel setaccess 1 2 callin=on ipmi=on link=on privilege=4
     sleep 21;		###Im not sure how many time (but in my case 21s)
@@ -19,3 +19,4 @@ if (( "$?" == 0 ));then
 else
     printf "now all channel open";
 fi
+rm ./result/user_admin_0.txt;
