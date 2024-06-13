@@ -5,7 +5,7 @@ date	:	.
 ---
 
 # playwright download button get file #
-WEBUI interface! playwright can download file 
+WEBUI interface! playwright can download file
 "在playwright中是可以按下載 他也顯示了下載 但是後面卻無法開啟dir (意思就是 找不到下載檔案在哪裡)"
 
 # update_BIOS_(playwright)_(WEB_UI) #
@@ -13,7 +13,3 @@ WEBUI interface! playwright can download file
 不能驗證 暫時拿掉
 
 ~~Fri Jun  7 16:28:33 CST 2024~~
-
-
-
-
