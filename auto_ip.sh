@@ -21,7 +21,7 @@ function_detch_file(){
     else
         var_ip=$(grep ip javascript_ip.js|cut -d ' ' -f 3|cut -d '"' -f 2)
         echo " You current IP address is [${var_ip}] ";
-        echo " Do you want to continue using it? (press y/n)";
+        echo " Do you want to continue using it? ";
         funciton_continue_using_ip;
     fi
 }
@@ -43,7 +43,7 @@ funciton_continue_using_ip(){
 }
 
 function_resetIP(){
-    read -p " input IP address : " var_ip;
+    read -p " input IP address : --->" var_ip;
     echo " confirm that the IP you want to use [${var_ip}]";
     bash ${file_check};
     local res=$?;

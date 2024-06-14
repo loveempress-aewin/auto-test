@@ -17,7 +17,7 @@ then
 else
     # echo "XXXXXXX";
     echo " try change password!! "
-    function_change_password;
+    # function_change_password;
 fi
 function_catch_version(){
 echo " /mnt/d/tem/WEB-auto/auto_get_version.sh--> IP : [${global_ip}]"

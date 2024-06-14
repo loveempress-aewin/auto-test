@@ -18,7 +18,7 @@ function_check2(){
     while [[ ${tem_flag} == 1 ]]
     do
         tem_flag=1;
-        read -p " continue using this IP( press y or n)" check_ans
+        read -p " continue using this IP( press y or n) --->" check_ans
         case ${check_ans} in
             [Yy]|[Yy][Ee][Ss])
                 tem_flag=0;

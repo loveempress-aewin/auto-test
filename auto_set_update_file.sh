@@ -57,7 +57,7 @@ function_let_user_choose(){
     echo -e "[1] ---> ${option_file_0}\n\n[2] ---> ${option_file_2}";
     while [[ ${detech_flag} == 1 ]]
     do
-    read select_update_file;
+    read -p "(press 1 OR 2 choose file )---> " select_update_file;
     case "${select_update_file}" in
         1)
             echo -e "// @ts-check\nexport let updateBMCfile=\"${option_file_0}\"">bmc_update.js
