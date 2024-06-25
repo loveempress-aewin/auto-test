@@ -1,28 +1,36 @@
-| item name                   | y/n  |
-|:---------------------------:|:----:|
-| vga                         | X    |
-| com1                        | X    |
-| com2                        | X    |
-| ipmitool                    | V    |
-| sensor value                | V    |
-| log in webui                | X    |
-| remote/manual power control | X    |
-| bmc i2c bus                 | X    |
-| bmc WDT                     | V    |
-| update bmc WEBUI            | V    |
-| update bmc(yafu)            | X    |
-| KVM                         | X    |
-| SOL                         | X    |
-| VBAT                        | V    |
-| update bios(webui)          | V    |
-| smart fan                   | X    |
-| store mac address           | X    |
-| I2C bus recovery            | X    |
-| slots verification          | X    |
-| ipmitool stress test        | V    |
-| fan sel                     | V    |
-| sel over night test         | V    |
-| bmc remote media            | X    |
+# BBU  #
+
+| item name                   | y/n | new |
+|:---------------------------:|:---:|-----|
+| vga                         | X   |     |
+| com1                        | X   |     |
+| com2                        | X   |     |
+| ipmitool                    | V   |     |
+| sensor value                | V   |     |
+| log in webui                | X   |     |
+| remote/manual power control | X   |     |
+| bmc i2c bus                 | X   |     |
+| bmc WDT                     | V   |     |
+| update bmc WEBUI            | V   |     |
+| update bmc(yafu)            | X   |     |
+| KVM                         | X   |     |
+| SOL                         | X   |     |
+| eMMC                        | X   | new |
+| VBAT                        | V   |     |
+| update bios(webui)          | V   |     |
+| smart fan                   | X   |     |
+| store mac address           | X   |     |
+| LCM                         | X   | new |
+| I2C bus recovery            | X   |     |
+| slots verification          | X   |     |
+| ipmitool stress test        | V   |     |
+| fan sel                     | V   |     |
+| 2 fans malfunction          | X   | new |
+| power policy                | X   | new |
+| sel over night test         | V   |     |
+| bmc remote media            | X   |     |
+
+# sd10 #
 
 | item name                                   | y/n | group                    | merge                                   |
 |:-------------------------------------------:|:---:|:------------------------:|:---------------------------------------:|
@@ -126,21 +134,29 @@ all items : 113
 -------------------------------------------------------------------------------
 
 BBU : 10 V 13 x --> 43%
+
 sd1 : 58 V 28 X --> 68%
+
 all : 69 V 41 X  -->62%
 
 Fri May 31 13:58:06 CST 2024
 // KVM --> X
+
 BBU :  9 V 14 x --> 39%
+
 all : 67 V 42 X  -->0.614678899083
 
 Fri Jun 14 14:59:02 CST 2024
 // update BIOS (WEB UI --> didnt check) temporary remove
+
 BBU : 8 V 15 x --> 34.7%
+
 sd1 : 58 V 28 X --> 68%
+
 all : 66 V 43 x --> 0.605504587156
 
 Fri Jun 14 15:56:08 CST 2024
 // because latest version (V1.0.6)
 BBU : 8V 19 x --> 0.296296296296
+
 all : 66 V 47 x --> 0.58407079646
