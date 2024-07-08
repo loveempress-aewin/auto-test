@@ -1,34 +1,37 @@
 # BBU  #
 
-| item name                   | y/n | new |
-|:---------------------------:|:---:|-----|
-| vga                         | X   |     |
-| com1                        | X   |     |
-| com2                        | X   |     |
-| ipmitool                    | V   |     |
-| sensor value                | V   |     |
-| log in webui                | X   |     |
-| remote/manual power control | X   |     |
-| bmc i2c bus                 | X   |     |
-| bmc WDT                     | V   |     |
-| update bmc WEBUI            | V   |     |
-| update bmc(yafu)            | X   |     |
-| KVM                         | X   |     |
-| SOL                         | X   |     |
-| eMMC                        | X   | new |
-| VBAT                        | V   |     |
-| update bios(webui)          | V   |     |
-| smart fan                   | X   |     |
-| store mac address           | X   |     |
-| LCM                         | X   | new |
-| I2C bus recovery            | X   |     |
-| slots verification          | X   |     |
-| ipmitool stress test        | V   |     |
-| fan sel                     | V   |     |
-| 2 fans malfunction          | X   | new |
-| power policy                | X   | new |
-| sel over night test         | V   |     |
-| bmc remote media            | X   |     |
+| item name                   | y/n | new   |
+|:---------------------------:|:---:|-------|
+| vga                         | X   |       |
+| com1                        | X   |       |
+| com2                        | X   |       |
+| buzzer function             | X   | 1.0.8 |
+| ipmitool                    | V   |       |
+| sensor value are reasonable | V   |       |
+| log in webui                | X   |       |
+| remote/manual power control | X   |       |
+| bmc i2c bus                 | X   |       |
+| bmc WDT                     | V   |       |
+| update bmc WEBUI            | V   |       |
+| update bmc(yafu)            | X   |       |
+| KVM                         | X   |       |
+| SOL                         | X   |       |
+| eMMC                        | X   | new   |
+| VBAT                        | V   |       |
+| update bios(webui)          | V   |       |
+| smart fan                   | X   |       |
+| store mac address           | X   |       |
+| LCM                         | X   | new   |
+| I2C bus recovery            | X   |       |
+| slots verification          | X   |       |
+| ipmitool stress test        | V   |       |
+| fan sel                     | V   |       |
+| 1 fan loses function        | X   | 1.0.8 |
+| 2 fans malfunction          | X   | new   |
+| power policy                | X   | new   |
+| system Isolation Test       | X   | 1.0.8 |
+| sel over night test         | V   |       |
+| bmc remote media            | X   |       |
 
 # sd10 #
 
@@ -167,10 +170,17 @@ BBU : 8V 19 x --> 0.296296296296
 
 all : 66 V 47 x --> 0.58407079646
 
+###### BBU_1.0.8 ######
+Mon Jul  8 17:04:39 CST 2024
+BBU : 8 V 22 X --> 0.266666666667
+all : 66 V 50 X --> 0.568965517241
+
+
 -------------------------------------------------------------------------------
-| BBU         | SD10         | ALL            | note                           |
-|:-----------:|:------------:|:--------------:|:------------------------------:|
-| 10/23(43%)  | 58 / 86(67%) | 68 / 109(62%)  |                                |
-| 9 / 23(39%) |              | 67 / 109 (61%) | [detail](#change_0)            |
-| 8 / 23(34%) |              | 66 / 109 (61%) | [detail](#WEBUI_bios)          |
-| 8 / 27(30%) |              | 66 / 113 (58%) | [detail](#update_BBU_version)  |
+| BBU         | SD10         | ALL            | note                          |
+|:-----------:|:------------:|:--------------:|:-----------------------------:|
+| 10/23(43%)  | 58 / 86(67%) | 68 / 109(62%)  |                               |
+| 9 / 23(39%) |              | 67 / 109 (61%) | [detail](#change_0)           |
+| 8 / 23(34%) |              | 66 / 109 (61%) | [detail](#WEBUI_bios)         |
+| 8 / 27(30%) |              | 66 / 113 (58%) | [detail](#update_BBU_version) |
+| 8 / 30(27%) |              | 66 / 116(57%)  | [detail](#BBU_1.0.8)          |
