@@ -1,17 +1,22 @@
 ---
 created : Tue Feb  6 08:57:45 CST 2024
-date    : Wed Jun 19 16:25:40 CST 2024
+date    : Wed Jun 26 14:29:44 CST 2024
 
 ---
 # Consensus
 This is an automatic test BMC written using playwright
++ only support `aspeed 2600`
+
+
+    Because in Aspeed 2600 vs 2500, the WEBUI interface is somewhat different,
+    and what can be confirmed now is the differences in updates interface.
 
 The file `dev_record.md` is all my development process
 1. development process
 2. problems encountered and solve them
 
 + The folder `note/` put all my test code or development stuff etc.  📜📄📑📚🧾🗒️📝
-+ The folder `pic/` put all mp4 mp3 gif png etc. 🎬
++ The folder `pic/ ` put all mp4 mp3 gif png etc. 🎬
 
 [set playwright environment](http://sd20-server.aewin.com:3000/_67u42-XQvisBUMef1VGeQ)
 
