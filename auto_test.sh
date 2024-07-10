@@ -3,6 +3,7 @@
 ### date	:	.
 ### auto	:	loveloveempress
 ### TODO:check have environment
+bash ./auto_delete_folder.sh ;
 file_create_environment="./auto_created_env.sh"
 bash ${file_create_environment};
 ### TODO:check ip address (input)
