@@ -69,7 +69,7 @@
 | ipmitool sdr type fan                       | V   | 6-sensor                 | TEST\_RECORD/Sensors/FAN.txt            |
 | ipmitool sdr type temp                      | V   | 6-sensor                 | TEST\_RECORD/Sensors/TEMPERATURE.txt    |
 | ipmitool sdr type voltage                   | V   | 6-sensor                 | TEST\_RECORD/Sensors/VOLTAGE.txt        |
-| ipmitool sdr \| g PSU                       | V   | 6-sensor                 | TEST]_RECORD/Sensors/PSU.txt            |
+| ipmitool sdr \| g PSU                       | V   | 6-sensor                 | TEST\_RECORD/Sensors/PSU.txt            |
 | ipmitool sdr \| g -i fan                    | V   | 6-sensor                 |                                         |
 | ipmitool screenshot in circle sensor        | V   | 6-sensor                 |                                         |
 | ipmitool sdr \| g -i psu                    | V   | 6-sensor                 |                                         |

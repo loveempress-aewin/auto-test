@@ -1,13 +1,11 @@
 ---
 created : Tue Feb  6 08:57:45 CST 2024
-date    : Wed Jun 26 14:29:44 CST 2024
+date    : Tue Jul  9 09:38:16 CST 2024
 
 ---
 # Consensus
 This is an automatic test BMC written using playwright
 + only support `aspeed 2600`
-
-
     Because in Aspeed 2600 vs 2500, the WEBUI interface is somewhat different,
     and what can be confirmed now is the differences in updates interface.
 
@@ -24,8 +22,16 @@ The file `dev_record.md` is all my development process
 -------------------------------------------------------------------------------
 
 # ❗necessary file ( developer  have to do ) ❗
+:LOGBOOK:
+- Note taken on [2024-07-09 Tue 11:06] \\
+  todo some thing
+- Note taken on [2024-07-09 Tue 10:37]
+:END:
 ❗❗❗❗❗❗❗🧬🧬🧬🧬🧬
 + Linux
++ only support `aspeed 2600`
++ BMC need have network (have ip)
+  + bmc and your device need to be on the same network segment
 
 execute `./auto_created_env.sh`
 [detail_monologue](#lovelove_queen_monologue)
@@ -40,6 +46,7 @@ execute `./auto_created_env.sh`
 ```bash
 ./auto_test.sh
 ```
+[auto test process](./note/auto_test_V0.md)
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
