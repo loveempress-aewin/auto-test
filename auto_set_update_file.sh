@@ -90,7 +90,9 @@ function_1_update(){
 
 # function_same_filename;
 # function_1_update;
-if [[ "${auto_set_update_file_local_number}" == 1 ]];then
+# printf "????${auto_set_update_file_local_number}";;
+##### this is get how many update times
+if [[ "${auto_set_update_file_local_number}" -lt 2 ]];then
     function_1_update;
 else
     function_same_filename;
