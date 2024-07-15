@@ -1714,3 +1714,46 @@ change `#xEFBC9B` --> `#x3B`
 ---
 ---
 ---
+
+#   hasText: /^Full Flash$/_click_error #
+```js
+Test timeout of 300000ms exceeded.
+
+Error: locator.click: Test timeout of 300000ms exceeded.
+Call log:
+  - waiting for locator('div').filter({ hasText: /^Full Flash$/ }).getByRole('insertion')
+
+
+  54 |
+  55 |
+> 56 | 	await page.locator('div').filter({ hasText: /^Full Flash$/ }).getByRole('insertion').click();
+     | 	                                                                                     ^
+  57 | 	page.once('dialog', dialog => {
+  58 | 	//	console.log(`Dialog message: ${dialog.message()}`);
+  59 | 		dialog.accept().catch(() => {});
+
+    at /mnt/d/WEB_auto/tests/uploadfile.spec.js:56:87
+```
+
+// ## TODO : need to write  --> Mon Jul 15 10:20:10 CST 2024
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+----------------------------------------------------------------
+
+# if_playwright_error_freeze #
+Here, the author wants to explain that
+if Playwright encounters an issue,
+it will automatically display an error message.
+The example the author uses here is when there’s an error connecting to BMC,
+and the browser automatically shows the error message
+![browser](./pic/playwright_not_connect.png)
+
+Next, let’s look at the shell interface at this moment
+![shell](./pic/bash_freezen.png)
+The shell might become unresponsive, so at this point,
+you can press `Ctrl+C` to exit.
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------

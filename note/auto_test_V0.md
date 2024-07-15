@@ -7,10 +7,10 @@ this use `./auto_test.sh`
 ```bash
 You current IP address is [192.168.120.61]
 Do you want to continue using it?
-continue using this IP( press y or n) --->y		### input
+continue using this IP( press y or n) --->y		### input (y || n)
 [192.168.120.61]
-right now version : [1.1.25]
-execute how many times ? (input number) : 1		### input
+right now version : [1.1.25]					### show the bmc version
+execute how many times ? (input number) : 1		### input (number)
 ```
 ![input](../pic/auto_test_V0_ipnut.png)
 

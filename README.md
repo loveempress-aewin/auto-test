@@ -1,6 +1,6 @@
 ---
 created : Tue Feb  6 08:57:45 CST 2024
-date    : Tue Jul  9 09:38:16 CST 2024
+date    : Mon Jul 15 13:37:59 CST 2024
 
 ---
 # Consensus
@@ -22,11 +22,6 @@ The file `dev_record.md` is all my development process
 -------------------------------------------------------------------------------
 
 # ❗necessary file ( developer  have to do ) ❗
-:LOGBOOK:
-- Note taken on [2024-07-09 Tue 11:06] \\
-  todo some thing
-- Note taken on [2024-07-09 Tue 10:37]
-:END:
 ❗❗❗❗❗❗❗🧬🧬🧬🧬🧬
 + Linux
 + only support `aspeed 2600`
@@ -36,8 +31,6 @@ The file `dev_record.md` is all my development process
 execute `./auto_created_env.sh`
 [detail_monologue](#lovelove_queen_monologue)
 
-+ windows
-
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
@@ -46,18 +39,18 @@ execute `./auto_created_env.sh`
 ```bash
 ./auto_test.sh
 ```
-[auto test process](./note/auto_test_V0.md)
+[auto input rule](./note/auto_test_V0.md)
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
 # [progress]
 
-
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
 # Develop area #
+[develop area](./note/V0_dev.md)
 
 + how to use burn BMC repeatedly (only LINUX)
 
@@ -65,11 +58,18 @@ use command
 ```bash
  ./auto_update_bmc.sh
 ```
-[see more details](http://sd20-server.aewin.com:3000/7d_073JjTEiIFLKFqkMNsw)
+[more update](./note/auto_sop_loop_burn_in_bmc.md)
+[](http://sd20-server.aewin.com:3000/7d_073JjTEiIFLKFqkMNsw)
 
 
 + if only set ip file(can only do it)
 `./auto_ip.sh`
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+## STATISTICS   ##
+[the statistics](./note/all_todo_statistics.md)
 
 
 -------------------------------------------------------------------------------
