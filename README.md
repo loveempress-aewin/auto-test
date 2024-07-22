@@ -9,7 +9,9 @@ This is an automatic test BMC written using playwright
     Because in Aspeed 2600 vs 2500, the WEBUI interface is somewhat different,
     and what can be confirmed now is the differences in updates interface.
 
-The file `dev_record.md` is all my development process
+The file [`dev_record.md`](./dev_record.md)
+or       [`chinese_dev_record.md`](./chinese_dev_record.md)
+is all my development process
 1. development process
 2. problems encountered and solve them
 
