@@ -19,7 +19,8 @@ echo -ne '#############             (66%)\r'
 vbat=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sdr|grep -i VBAT);
 printf  "${vbat}">./result/bbu/vbat.txt
 #### TODO : fan sel / sel elist
-fan=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist|grep -i fan);
+##fan=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sel elist|grep -i fan);
+fan=$(ipmitool -I lanplus -H${global_ip} -Uadmin -P11111111 sdr type fan)
 printf  "${fan}">./result/bbu/fan.txt
 bbu_playwright=$(npx playwright test tests/login_sdr.spec.js --headed);
 echo -ne '#######################   (100%)\r';
