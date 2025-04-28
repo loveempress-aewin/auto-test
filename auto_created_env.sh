@@ -1,7 +1,13 @@
 #!/bin/bash
 ### created	:	Tue May 21 13:25:20 CST 2024
-### date	:	.
+### date	:	2025-04-28_15:02:16
 ###
+### It will created structure
+###result/
+###├── TEST_RECORD/
+###│   ├── Log_Reports/
+###│   └── Sensors/
+###└── bbu/
 if [ ! -d ./UPLOADFILES/ ];
 then
     mkdir  -p UPLOADFILES/
