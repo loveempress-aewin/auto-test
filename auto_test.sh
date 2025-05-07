@@ -12,6 +12,9 @@ bash ${file_setip};
 # . ./auto_get_version.sh
 . ./auto_parse_version.sh ;
 ### TODO:input how loop number (input)
+
+function_bmc_loop_version()
+{
 until [[ ${execute} == +([0-9]) ]];do
     read -p " execute how many times ? (input number) : " execute
     if [[ ${execute} -eq 0 ]]
@@ -29,6 +32,7 @@ done;
 # file_set_update_file="./auto_set_update_file.sh";
 # bash ${file_set_update_file};
 . ./auto_set_update_file.sh ${execute};
+}
 ### TODO:check ipmitool can use
 ### TODO:check bmc version
 file_get_version="./auto_get_version.sh"
@@ -74,40 +78,41 @@ function_auto_switch_update_file(){
     # echo "change_version --> ${change_version}";
     # echo -e " parse_name -->  ${parse_name} ";
 }
-printf "\n================AUTO UPDATE BMC================\n";
-for i in $(seq 1 ${execute})
-do
-    if [[ "${i}" -gt 1 ]];then
-        # echo " doit [${i}]";
-        function_auto_switch_update_file;
-    fi
-    echo " !!!====> ${i}" >> log.txt;
-    $(npx playwright test tests/change.spec.js --headed>> log.txt)
-    $(command -v date >> log.txt)
-    sleep 10;
-    # function_catch_ver;
-    # if (( ${i} > 1 ));then
-    #     function_catch_version;
-    # fi
-    $(ipmitool -I lanplus -H ${global_ip} -U admin -P 11111111 raw 0x1e 0x01 0x00 >> log.txt);
-    $(date >> log.txt)
-    $(npx playwright test tests/uploadfile.spec.js --headed >> log.txt)
-    ###----- sleep 2m;----------------
-    var_nmm=1;
-    var_sum=100;
-    var_max=120;
-    # for ((var_nnm=0 ; var_nnm<121 ; var_nnm++ ));do
-    # for var_num in $(seq ${var_nmm} ${var_max});do
-    #     # echo -ne ''
-    #     sleep 1;
-    #     function_P_bar ${var_num} ${var_max};
-    # done
-    # printf '\nFinished!\n' ;
-    ./auto_function_process.sh 120;
-    $(npx playwright test tests/change.spec.js --headed>> log.txt)
-    if [ ${i} -eq ${execute} ];
-    then
-        #echo " this is last one ";
-        $(npx playwright test tests/change.spec.js --headed >> log.txt);
-    fi
-done
+
+# printf "\n================AUTO UPDATE BMC================\n";
+# for i in $(seq 1 ${execute})
+# do
+#     if [[ "${i}" -gt 1 ]];then
+#         # echo " doit [${i}]";
+#         function_auto_switch_update_file;
+#     fi
+#     echo " !!!====> ${i}" >> log.txt;
+#     $(npx playwright test tests/change.spec.js --headed>> log.txt)
+#     $(command -v date >> log.txt)
+#     sleep 10;
+#     # function_catch_ver;
+#     # if (( ${i} > 1 ));then
+#     #     function_catch_version;
+#     # fi
+#     $(ipmitool -I lanplus -H ${global_ip} -U admin -P 11111111 raw 0x1e 0x01 0x00 >> log.txt);
+#     $(date >> log.txt)
+#     $(npx playwright test tests/uploadfile.spec.js --headed >> log.txt)
+#     ###----- sleep 2m;----------------
+#     var_nmm=1;
+#     var_sum=100;
+#     var_max=120;
+#     # for ((var_nnm=0 ; var_nnm<121 ; var_nnm++ ));do
+#     # for var_num in $(seq ${var_nmm} ${var_max});do
+#     #     # echo -ne ''
+#     #     sleep 1;
+#     #     function_P_bar ${var_num} ${var_max};
+#     # done
+#     # printf '\nFinished!\n' ;
+#     ./auto_function_process.sh 120;
+#     $(npx playwright test tests/change.spec.js --headed>> log.txt)
+#     if [ ${i} -eq ${execute} ];
+#     then
+#         #echo " this is last one ";
+#         $(npx playwright test tests/change.spec.js --headed >> log.txt);
+#     fi
+# done
