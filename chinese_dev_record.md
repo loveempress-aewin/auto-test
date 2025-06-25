@@ -1772,4 +1772,48 @@ function_execute(){
 
 ---
 ---
----
+
+## running test  ##
+```bash ====sss================================================================
+npx playwright test
+####runs all tests on all browsers in headless mode
+
+npx playwright test --workers 3
+####runs with 3 workers in parallel
+
+npx playwright test one.spec.js
+####runs a specific test file
+
+npx playwright test one.spec.js two.spec.js
+####runs the files specified
+
+npx playwright test one two
+####runs files that have one or two in the file name
+
+npx playwright test -g 'check title'
+####runs test with the title
+
+npx playwright test --project-chromium
+####runs on specific browser
+
+npx playwright test --headed
+####runs tests in headed
+
+npx playwright test --debug
+####debug tests
+
+npx playwright test example.spec.js --debug
+####debug specific test file
+```
+
+# how to write tests #
+1. Step 1 create a new file under test folder
+2. Step 2 Add module playwright/test
+
+> require () is a node js built-in function used to load modules present in separate files
+> Here we are loading test and expect modules from playwright package
+`const {test,expect} = require ('@playwright/test')`
+
+> note : javascript is a asynchronous programming
+
+
