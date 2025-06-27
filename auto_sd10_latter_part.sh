@@ -28,6 +28,7 @@ printf "${sel_elist}">./result/sel_elist_0.txt
 ./auto_function_process.sh 8;
 function_clear;
 printf "${sel_clear_0}">./result/sel_clear_0.txt;
+
 ###double check the clear is comfirm clear
 . ./auto_function_elist.sh;
 printf "${sel_elist}">./result/sel_elist_check_clear.txt

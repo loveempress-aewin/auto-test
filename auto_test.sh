@@ -52,8 +52,10 @@ file_get_version="./auto_get_version.sh"
 # echo " -- catch_version : ${catch_version}";
 # until [[ ${execute} == +([1-9]) ]];do
 auto_update_bmc_flag=0;
+
 #### this part use another new expand
 file_expand="./auto_expand.sh"
+
 bash ${file_expand};
 function_auto_switch_update_file(){
     echo "";

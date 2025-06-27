@@ -62,4 +62,4 @@ if [[ "${local_elist_count_old}" == "${local_elist_count_end}" ]];then
 fi
 }
 
-function_execute;
+#function_execute;  // cancle watchdog (because IDK shutdown)
